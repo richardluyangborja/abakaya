@@ -1,6 +1,9 @@
-import { View, Text, Button, Pressable } from "react-native";
+import { useRouter } from "expo-router";
+import { View, Text, Pressable } from "react-native";
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <View
       style={{
@@ -15,6 +18,7 @@ export default function Index() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: 16,
+          marginTop: 24,
         }}
       >
         <View
@@ -54,6 +58,7 @@ export default function Index() {
             borderRadius: 25,
             overflow: "hidden",
           }}
+          onPress={() => router.navigate("/Menu")}
         >
           <Text
             style={{
