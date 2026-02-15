@@ -1,27 +1,21 @@
 import { useRouter } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, StyleSheet, ImageBackground, Image } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Menu() {
   const router = useRouter();
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-      }}
+    <ImageBackground 
+      source={require('../assets/images/BG2.png')}
+       style={styles.background}
     >
       <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
+        style={styles.navbar}
       >
         <Pressable onPress={() => router.navigate("/")}>
-          <Text>Home</Text>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
-        <Text>ABAKAYA</Text>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
       <View
         style={{
@@ -41,10 +35,22 @@ export default function Menu() {
           }}
           onPress={() => router.navigate("/Leksyon")}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
+          <Image
+            source={require('../assets/images/LEKSYON.png')} 
+            style={{
+              width: 75,
+              height: 75, 
+              marginRight: 16,
+              zIndex: 1,
+              flexDirection: "row",
+              paddingBottom: 30,
+            }}
+          />
+          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 30, marginLeft: 150, position: "absolute", marginTop: 40, }}>
             Leksyon
           </Text>
         </Pressable>
+
         <Pressable
           style={{
             backgroundColor: "#EDB111",
@@ -53,11 +59,36 @@ export default function Menu() {
             padding: 24,
           }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
+          <Image
+            source={require('../assets/images/PAGSUSULIT.png')} 
+            style={{
+              width: 75,
+              height: 75, 
+              marginRight: 16,
+              zIndex: 1,
+              flexDirection: "row",
+            }}
+            />
+          <Text style={{color: "#fff", fontWeight: "bold", fontSize: 30, marginLeft: 150, position: "absolute", marginTop: 40, }}>
             Pagsusulit
           </Text>
         </Pressable>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create ({
+  background: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+});
