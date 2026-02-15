@@ -1,54 +1,62 @@
-import { StatusBar } from 'expo-status-bar';
-import Feather from '@expo/vector-icons/Feather';
-import { StyleSheet, Text, View, ImageBackground, Image, Pressable } from 'react-native';
+import Feather from "@expo/vector-icons/Feather";
+import { useRouter } from "expo-router";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Image,
+  Pressable,
+} from "react-native";
 
 export default function App() {
+  const router = useRouter();
+
   return (
-    <ImageBackground 
-      source={require('./assets/background.png')} 
+    <ImageBackground
+      source={require("../assets/images/background.png")}
       style={styles.background}
     >
-      <Text style={styles.text_abakaya}>
-          ABAKAYA!
-        </Text>
+      <Text style={styles.text_abakaya}>ABAKAYA!</Text>
 
-      <Image 
-        source={require('./assets/AGILA.png')} 
-        style={styles.profile} 
+      <Image
+        source={require("../assets/images/AGILA.png")}
+        style={styles.profile}
       />
 
-        <Feather style={styles.settings} name="settings" size={45} color="black" />
+      <Feather
+        style={styles.settings}
+        name="settings"
+        size={45}
+        color="black"
+      />
 
-        <Text style={styles.alamin}>
-          Alamin, Aralin, Kayang-kaya
-        </Text>
+      <Text style={styles.alamin}>Alamin, Aralin, Kayang-kaya</Text>
 
-        <Pressable style={styles.btn}
-          onPress={() => router.navigate("/Menu")}
+      <Pressable style={styles.btn} onPress={() => router.navigate("/Menu")}>
+        <Text
+          style={{
+            fontSize: 20,
+            color: "#fff",
+          }}
         >
-          <Text
-            style={{
-              fontSize: 20,
-              color: "#fff",
-            }}
-          >
-            START
-          </Text>
-        </Pressable>
+          START
+        </Text>
+      </Pressable>
 
       <View style={styles.container}>
-        <Image 
-          source={require('./assets/TOP.png')} 
-          style={styles.image} 
+        <Image
+          source={require("../assets/images/TOP.png")}
+          style={styles.image}
         />
       </View>
-    <Image 
-        source={require('./assets/HOME KALABAW.png')} 
-        style={styles.kalabaw} 
+      <Image
+        source={require("../assets/images/HOME KALABAW.png")}
+        style={styles.kalabaw}
       />
-      <Image 
-        source={require('./assets/BOTTOM.png')} 
-        style={styles.bottom_image} 
+      <Image
+        source={require("../assets/images/BOTTOM.png")}
+        style={styles.bottom_image}
       />
     </ImageBackground>
   );
@@ -57,11 +65,11 @@ export default function App() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   profile: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     marginLeft: 5,
     marginTop: 30,
@@ -72,35 +80,36 @@ const styles = StyleSheet.create({
     zIndex: 1,
     backgroundColor: "#000",
   },
-  settings: { 
-    position: 'absolute', 
-    top: 0, 
-    right: 0, 
+  settings: {
+    position: "absolute",
+    top: 0,
+    right: 0,
     marginRight: 5,
     marginTop: 35,
     zIndex: 1,
-  }, 
+  },
   btn: {
-    position: 'absolute',
+    position: "absolute",
     paddingVertical: 12,
     paddingHorizontal: 24,
     backgroundColor: "#CC0000",
     alignSelf: "center",
     borderRadius: 25,
     overflow: "hidden",
+    zIndex: 1000,
   },
   text_abakaya: {
-    position: 'absolute',
-    color: '#023D7A',
+    position: "absolute",
+    color: "#023D7A",
     fontSize: 70,
     fontWeight: 900,
     top: 0,
     marginTop: 200,
     zIndex: 1,
   },
-  alamin : {
-    position: 'absolute',
-    color: '#023D7A',
+  alamin: {
+    position: "absolute",
+    color: "#023D7A",
     fontSize: 24,
     fontWeight: 900,
     top: 0,
@@ -108,13 +117,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   image: {
-    position: 'absolute',
+    position: "absolute",
     top: -20,
-    width: '100%',
+    width: "100%",
     height: 500,
   },
   kalabaw: {
-    position: 'absolute',
+    position: "absolute",
     width: 320,
     height: 320,
     marginTop: 430,
@@ -122,13 +131,13 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   bottom_image: {
-    width: '100%',
+    width: "100%",
     height: 300,
     bottom: 0,
   },
   container: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
   },
 });

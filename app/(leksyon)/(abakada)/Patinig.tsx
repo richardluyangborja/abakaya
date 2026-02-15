@@ -54,6 +54,7 @@ export default function Patinig() {
           justifyContent: "flex-start",
           gap: 16,
           paddingHorizontal: 16,
+          paddingVertical: 16,
         }}
       >
         <View

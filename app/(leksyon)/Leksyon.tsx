@@ -1,5 +1,11 @@
 import { RelativePathString, useRouter } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  Pressable,
+  Text,
+  View,
+} from "react-native";
 
 export default function Leksyon() {
   const router = useRouter();
@@ -7,26 +13,32 @@ export default function Leksyon() {
     {
       label: "Abakada",
       href: "/Abakada",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Maikling Kwento",
       href: "/MaiklingKwento",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Alamat",
       href: "/Alamat",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Numero",
       href: "/Numero",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Hugis",
       href: "/Hugis",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Kulay",
       href: "/Kulay",
+      image: require("../../assets/images/ABAKADA.png"),
     },
   ];
 
@@ -80,6 +92,7 @@ export default function Leksyon() {
           <Pressable
             key={p.href}
             style={{
+              position: "relative",
               backgroundColor: "#EDB111",
               borderRadius: 20,
               width: "100%",
@@ -87,6 +100,14 @@ export default function Leksyon() {
             }}
             onPress={() => router.navigate(p.href as RelativePathString)}
           >
+            <Image
+              source={p.image as ImageSourcePropType}
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: 100,
+              }}
+            />
             <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
               {p.label}
             </Text>

@@ -1,20 +1,49 @@
-import { RelativePathString, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text, View } from "react-native";
 
-export default function MaiklingKwento() {
+export default function Numero() {
   const router = useRouter();
-  const pages = [
+  const numero = [
     {
-      label: "Pamilyang Nagtutulungan",
-      href: "/PamilyangNagtutulungan",
+      title: "1",
+      // image: "path",
+      label: "Isa",
     },
     {
-      label: "Ang Lihim ni Lira",
-      href: "/AngLihimniLira",
+      title: "2",
+      label: "Dalawa",
     },
     {
-      label: "Si Lukas at ang Kanyang Lapis",
-      href: "/SiLukasatangKanyangLapis",
+      title: "3",
+      label: "Tatlo",
+    },
+    {
+      title: "4",
+      label: "Apat",
+    },
+    {
+      title: "5",
+      label: "Lima",
+    },
+    {
+      title: "6",
+      label: "Anim",
+    },
+    {
+      title: "7",
+      label: "Pito",
+    },
+    {
+      title: "8",
+      label: "Walo",
+    },
+    {
+      title: "9",
+      label: "Siyam",
+    },
+    {
+      title: "10",
+      label: "Sampu",
     },
   ];
 
@@ -64,24 +93,28 @@ export default function MaiklingKwento() {
                 fontSize: 20,
               }}
             >
-              Maikling Kwento
+              Numero
             </Text>
           </View>
-          {pages.map((p) => (
-            <Pressable
-              key={p.label}
+          {numero.map((n) => (
+            <View
+              key={n.label}
               style={{
-                backgroundColor: "#EDB111",
+                flexDirection: "row",
+                gap: 24,
+                backgroundColor: "#eee",
                 borderRadius: 20,
                 width: "100%",
                 padding: 24,
               }}
-              onPress={() => router.navigate(p.href as RelativePathString)}
             >
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
-                {p.label}
+              <Text style={{ color: "#000", fontSize: 52, fontWeight: "bold" }}>
+                {n.title}
               </Text>
-            </Pressable>
+              <Text style={{ color: "#000", fontWeight: "bold", fontSize: 24 }}>
+                {n.label}
+              </Text>
+            </View>
           ))}
         </View>
       </ScrollView>

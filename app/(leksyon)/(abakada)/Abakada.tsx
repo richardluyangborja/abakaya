@@ -53,6 +53,7 @@ export default function Abakada() {
             width: "100%",
             padding: 24,
           }}
+          onPress={() => router.navigate("/Katinig")}
         >
           <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
             Katinig
