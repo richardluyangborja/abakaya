@@ -1,36 +1,104 @@
 import { useRouter } from "expo-router";
-import { Pressable, Text, View, Image, ImageBackground, ImageSourcePropType, StyleSheet } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  StyleSheet,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
+function getLabel(highlightLetter: "A" | "E" | "I" | "O" | "U") {
+  return (
+    <View style={{ flexDirection: "row", gap: 8 }}>
+      {highlightLetter === "A" ? (
+        <Text
+          style={{ fontSize: 20, fontWeight: "semibold", color: "#C219AE" }}
+        >
+          A
+        </Text>
+      ) : (
+        <Text style={{ fontSize: 20, fontWeight: "semibold", color: "#fff" }}>
+          A
+        </Text>
+      )}
+      {highlightLetter === "E" ? (
+        <Text
+          style={{ fontSize: 20, fontWeight: "semibold", color: "#C219AE" }}
+        >
+          E
+        </Text>
+      ) : (
+        <Text style={{ fontSize: 20, fontWeight: "semibold", color: "#fff" }}>
+          E
+        </Text>
+      )}
+      {highlightLetter === "I" ? (
+        <Text
+          style={{ fontSize: 20, fontWeight: "semibold", color: "#C219AE" }}
+        >
+          I
+        </Text>
+      ) : (
+        <Text style={{ fontSize: 20, fontWeight: "semibold", color: "#fff" }}>
+          I
+        </Text>
+      )}
+      {highlightLetter === "O" ? (
+        <Text
+          style={{ fontSize: 20, fontWeight: "semibold", color: "#C219AE" }}
+        >
+          O
+        </Text>
+      ) : (
+        <Text style={{ fontSize: 20, fontWeight: "semibold", color: "#fff" }}>
+          O
+        </Text>
+      )}
+      {highlightLetter === "U" ? (
+        <Text
+          style={{ fontSize: 20, fontWeight: "semibold", color: "#C219AE" }}
+        >
+          U
+        </Text>
+      ) : (
+        <Text style={{ fontSize: 20, fontWeight: "semibold", color: "#fff" }}>
+          U
+        </Text>
+      )}
+    </View>
+  );
+}
 
 export default function Patinig() {
   const router = useRouter();
-  const label = "A E I O U";
-  
+
   const patinig = [
     {
       title: "Aa",
       image: require("../../../assets/images/Aa.png"),
-      label,
+      child: getLabel("A"),
     },
     {
       title: "Ee",
       image: require("../../../assets/images/Ee.png"),
-      label,
+      child: getLabel("E"),
     },
     {
       title: "Ii",
       image: require("../../../assets/images/Ii.png"),
-      label,
+      child: getLabel("I"),
     },
     {
       title: "Oo",
       image: require("../../../assets/images/Oo.png"),
-      label,
+      child: getLabel("O"),
     },
     {
       title: "Uu",
       image: require("../../../assets/images/Uu.png"),
-      label,
+      child: getLabel("U"),
     },
   ];
 
@@ -42,13 +110,12 @@ export default function Patinig() {
         backgroundColor: "#fff",
       }}
     >
-      
-       <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+      <View style={styles.navbar}>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <View
         style={{
@@ -92,7 +159,7 @@ export default function Patinig() {
         >
           {patinig.map((p) => (
             <View
-              key={p.label}
+              key={p.title}
               style={{
                 width: "46%",
                 height: "auto",
@@ -102,16 +169,18 @@ export default function Patinig() {
                 alignItems: "center",
                 justifyContent: "center",
                 padding: 12,
-                position: "relative", 
+                position: "relative",
               }}
             >
-              <Text style={{ fontSize: 32, color: "#fff", marginBottom: 100, }}>{p.title}</Text>
-              <Text style={{ fontSize: 16, color: "#fff" }}>{p.label}</Text>
+              <Text style={{ fontSize: 32, color: "#fff", marginBottom: 100 }}>
+                {p.title}
+              </Text>
+              {p.child}
 
               <Image
                 source={p.image}
                 style={{
-                  position: "absolute", 
+                  position: "absolute",
                   width: 100,
                   height: 100,
                 }}
@@ -125,7 +194,7 @@ export default function Patinig() {
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -135,3 +204,4 @@ const styles = StyleSheet.create ({
     gap: 16,
   },
 });
+

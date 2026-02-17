@@ -1,6 +1,14 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, Image, StyleSheet, ImageBackground } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Katinig() {
   const router = useRouter();
@@ -89,13 +97,13 @@ export default function Katinig() {
         flex: 1,
         backgroundColor: "#fff",
       }}
-      >
-       <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+    >
+      <View style={styles.navbar}>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <ScrollView>
         <View
@@ -152,16 +160,20 @@ export default function Katinig() {
                   position: "relative",
                 }}
               >
-                <Text style={{ fontSize: 32, color: "#fff", marginBottom: 100, }}>{p.title}</Text>
+                <Text
+                  style={{ fontSize: 32, color: "#fff", marginBottom: 100 }}
+                >
+                  {p.title}
+                </Text>
                 <Text style={{ fontSize: 16, color: "#fff" }}>{p.label}</Text>
                 <Image
                   source={p.image}
                   style={{
-                  position: "absolute", 
-                  width: 100,
-                  height: 100,
+                    position: "absolute",
+                    width: 100,
+                    height: 100,
                   }}
-                    resizeMode="cover"
+                  resizeMode="cover"
                 />
               </View>
             ))}
@@ -172,8 +184,7 @@ export default function Katinig() {
   );
 }
 
-
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -183,3 +194,4 @@ const styles = StyleSheet.create ({
     gap: 16,
   },
 });
+
