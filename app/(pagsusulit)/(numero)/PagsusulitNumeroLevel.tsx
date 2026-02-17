@@ -1,7 +1,7 @@
 import { useRouter } from "expo-router";
 import { Pressable, Text, View } from "react-native";
 
-export default function Menu() {
+export default function PagsusulitNumeroLevel() {
   const router = useRouter();
   return (
     <View
@@ -32,6 +32,23 @@ export default function Menu() {
           paddingHorizontal: 16,
         }}
       >
+        <View
+          style={{
+            padding: 16,
+            backgroundColor: "#CC0000",
+            borderRadius: 20,
+          }}
+        >
+          <Text
+            style={{
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: 20,
+            }}
+          >
+            Pagsusulit
+          </Text>
+        </View>
         <Pressable
           style={{
             backgroundColor: "#EDB111",
@@ -39,10 +56,10 @@ export default function Menu() {
             width: "100%",
             padding: 24,
           }}
-          onPress={() => router.navigate("/Leksyon")}
+          onPress={() => router.navigate("/MadaliPagsusulitNumero")}
         >
           <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
-            Leksyon
+            Madali
           </Text>
         </Pressable>
         <Pressable
@@ -55,7 +72,7 @@ export default function Menu() {
           onPress={() => router.navigate("/Pagsusulit")}
         >
           <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
-            Pagsusulit
+            Mahirap
           </Text>
         </Pressable>
       </View>
