@@ -4,40 +4,40 @@ import {
   ScrollView,
   Text,
   View,
-  StyleSheet,
   ImageBackground,
+  StyleSheet,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function MaiklingKwento() {
+export default function Prutas() {
   const router = useRouter();
   const pages = [
     {
-      label: "Ang Batang Mabait at Magalang",
-      href: "/AngBatangMabaitAtMagalang",
+      label: "Alamat ng Pinya",
+      href: "/AlamatNgPinya",
+      image: require("../../../../assets/images/LUGAR.png"),
     },
     {
-      label: "Ang Batang Mahilig Mag-Cellphone",
-      href: "/AngBatangMahiligMagCellphone",
-    },
-    {
-      label: "Ang Batang Mahilig Magsinungaling",
-      href: "/AngBatangMahiligMagsinungaling",
+      label: "Alamat ng Mangga",
+      href: "/AlamatNgMangga",
+      image: require("../../../../assets/images/LUGAR.png"),
     },
   ];
 
   return (
     <ImageBackground
-      source={require("../../../assets/images/BG3.png")}
-      style={styles.background}
+      source={require("../../../../assets/images/NUMERO BG.png")}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+      }}
     >
       <View style={styles.navbar}>
-        <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Pressable onPress={() => router.back()}>
           <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
         <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
-
       <ScrollView>
         <View
           style={{
@@ -64,23 +64,27 @@ export default function MaiklingKwento() {
                 fontSize: 20,
               }}
             >
-              Maikling Kwento
+              Prutas
             </Text>
           </View>
           {pages.map((p) => (
             <Pressable
               key={p.label}
               style={{
-                backgroundColor: "#EDB111",
                 borderRadius: 20,
                 width: "100%",
                 padding: 24,
               }}
               onPress={() => router.navigate(p.href as RelativePathString)}
             >
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
-                {p.label}
-              </Text>
+              <ImageBackground
+                source={p.image}
+                style={styles.imageBackground}
+                imageStyle={styles.imageStyle}
+              >
+                <View style={styles.overlay} />
+                <Text style={styles.text}>{p.label}</Text>
+              </ImageBackground>
             </Pressable>
           ))}
         </View>
@@ -98,8 +102,29 @@ const styles = StyleSheet.create({
     backgroundColor: "#01254C",
     gap: 16,
   },
-  background: {
+  imageBackground: {
     flex: 1,
-    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    width: "100%",
+    height: "400%",
+    marginBottom: 50,
+  },
+  imageStyle: {
+    borderRadius: 20,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
+    borderRadius: 20,
+    width: "100%",
+    height: "400%",
+  },
+  text: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 24,
+    top: "130%",
   },
 });

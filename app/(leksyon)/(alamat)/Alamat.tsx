@@ -1,51 +1,59 @@
 import { RelativePathString, useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, ImageBackground, StyleSheet, Image } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  ImageBackground,
+  StyleSheet,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function MaiklingKwento() {
   const router = useRouter();
   const pages = [
     {
       label: "Lugar",
-      href: "/",
+      href: "/Lugar",
       image: require("../../../assets/images/LUGAR.png"),
     },
     {
       label: "Prutas",
-      href: "/",
+      href: "/Prutas",
       image: require("../../../assets/images/PRUTAS.png"),
     },
     {
       label: "Gulay",
-      href: "/",
+      href: "/Gulay",
       image: require("../../../assets/images/GULAY.png"),
     },
     {
       label: "Hayop",
-      href: "/",
+      href: "/Hayop",
       image: require("../../../assets/images/HAYOP.png"),
     },
+    // WARN: bagay -> halaman
     {
-      label: "Bagay",
-      href: "/",
+      label: "Halaman",
+      href: "/Halaman",
       image: require("../../../assets/images/BAGAY.png"),
     },
   ];
 
   return (
     <ImageBackground
-          source={require("../../../assets/images/NUMERO BG.png")}
-          style={{
-            flex: 1,
-            backgroundColor: "#fff",
-          }}
-          >
+      source={require("../../../assets/images/NUMERO BG.png")}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+      }}
+    >
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.navigate("/Leksyon")}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
       <ScrollView>
         <View
           style={{
@@ -85,15 +93,14 @@ export default function MaiklingKwento() {
               }}
               onPress={() => router.navigate(p.href as RelativePathString)}
             >
-             
               <ImageBackground
-    source={p.image}
-    style={styles.imageBackground}
-    imageStyle={styles.imageStyle}
-  >
-    <View style={styles.overlay} />
-    <Text style={styles.text}>{p.label}</Text>
-  </ImageBackground>
+                source={p.image}
+                style={styles.imageBackground}
+                imageStyle={styles.imageStyle}
+              >
+                <View style={styles.overlay} />
+                <Text style={styles.text}>{p.label}</Text>
+              </ImageBackground>
             </Pressable>
           ))}
         </View>
@@ -102,7 +109,7 @@ export default function MaiklingKwento() {
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -111,29 +118,30 @@ const styles = StyleSheet.create ({
     backgroundColor: "#01254C",
     gap: 16,
   },
-   imageBackground: {
+  imageBackground: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 20,
-    width: '100%',
-    height: '400%',
+    width: "100%",
+    height: "400%",
     marginBottom: 50,
   },
   imageStyle: {
     borderRadius: 20,
   },
   overlay: {
-    ...StyleSheet.absoluteFillObject, 
-    backgroundColor: 'rgba(0, 0, 0, 0.25)',
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.25)",
     borderRadius: 20,
-    width: '100%',
-    height: '400%',
+    width: "100%",
+    height: "400%",
   },
   text: {
-    color: '#fff',
-    fontWeight: 'bold',
+    color: "#fff",
+    fontWeight: "bold",
     fontSize: 24,
-    top: '130%',
+    top: "130%",
   },
 });
+

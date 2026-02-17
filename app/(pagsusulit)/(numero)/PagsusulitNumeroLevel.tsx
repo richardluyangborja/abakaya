@@ -18,8 +18,8 @@ export default function PagsusulitNumeroLevel() {
           padding: 16,
         }}
       >
-        <Pressable onPress={() => router.navigate("/")}>
-          <Text>Home</Text>
+        <Pressable onPress={() => router.back()}>
+          <Text>Back</Text>
         </Pressable>
         <Text>ABAKAYA</Text>
       </View>
