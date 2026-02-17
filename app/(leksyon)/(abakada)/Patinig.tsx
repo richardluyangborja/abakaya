@@ -1,52 +1,55 @@
 import { useRouter } from "expo-router";
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, Image, ImageBackground, ImageSourcePropType, StyleSheet } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Patinig() {
   const router = useRouter();
+  const label = "A E I O U";
+  
   const patinig = [
     {
       title: "Aa",
-      // image: "path",
-      label: "Araw",
+      image: require("../../../assets/images/Aa.png"),
+      label,
     },
     {
       title: "Ee",
-      label: "Eroplano",
+      image: require("../../../assets/images/Ee.png"),
+      label,
     },
     {
       title: "Ii",
-      label: "Ilaw",
+      image: require("../../../assets/images/Ii.png"),
+      label,
     },
     {
       title: "Oo",
-      label: "Orasan",
+      image: require("../../../assets/images/Oo.png"),
+      label,
     },
     {
       title: "Uu",
-      label: "Ulap",
+      image: require("../../../assets/images/Uu.png"),
+      label,
     },
   ];
 
   return (
-    <View
+    <ImageBackground
+      source={require("../../../assets/images/SILID.png")}
       style={{
         flex: 1,
         backgroundColor: "#fff",
       }}
     >
-      <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
-      >
-        <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
-        </Pressable>
-        <Text>ABAKAYA</Text>
-      </View>
+      
+       <View style={styles.navbar}>
+      <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+      </Pressable>
+      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+    </View>
+
       <View
         style={{
           flex: 1,
@@ -75,6 +78,7 @@ export default function Patinig() {
             Patinig
           </Text>
         </View>
+
         <View
           style={{
             paddingHorizontal: 12,
@@ -98,14 +102,36 @@ export default function Patinig() {
                 alignItems: "center",
                 justifyContent: "center",
                 padding: 12,
+                position: "relative", 
               }}
             >
-              <Text style={{ fontSize: 32, color: "#fff" }}>{p.title}</Text>
+              <Text style={{ fontSize: 32, color: "#fff", marginBottom: 100, }}>{p.title}</Text>
               <Text style={{ fontSize: 16, color: "#fff" }}>{p.label}</Text>
+
+              <Image
+                source={p.image}
+                style={{
+                  position: "absolute", 
+                  width: 100,
+                  height: 100,
+                }}
+                resizeMode="cover"
+              />
             </View>
           ))}
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+});
