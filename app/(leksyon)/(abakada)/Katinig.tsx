@@ -1,92 +1,102 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, Image, StyleSheet, ImageBackground } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Katinig() {
   const router = useRouter();
   const katinig = [
     {
       title: "Bb",
-      // image: "path",
+      image: require("../../../assets/images/Bb.png"),
       label: "Ba Be Bi Bo Bu",
     },
     {
       title: "Dd",
+      image: require("../../../assets/images/Dd.png"),
       label: "Da De Di Do Du",
     },
     {
       title: "Hh",
+      image: require("../../../assets/images/Hh.png"),
       label: "Ha He Hi Ho Hu",
     },
     {
       title: "Kk",
+      image: require("../../../assets/images/Kk.png"),
       label: "Ka Ke Ki Ko Ku",
     },
     {
       title: "Gg",
+      image: require("../../../assets/images/Gg.png"),
       label: "Ga Ge Gi Go Gu",
     },
     {
       title: "Ll",
+      image: require("../../../assets/images/Ll.png"),
       label: "La Le Li Lo Lu",
     },
     {
       title: "Mm",
+      image: require("../../../assets/images/Mm.png"),
       label: "Ma Me Mi Mo Mu",
     },
     {
       title: "Nn",
+      image: require("../../../assets/images/Nn.png"),
       label: "Na Ne Ni No Nu",
     },
     {
-      title: "Nga",
+      title: "Ng",
+      image: require("../../../assets/images/Ng.png"),
       label: "Nga Nge Ngi Ngo Ngu",
     },
     {
       title: "Pp",
+      image: require("../../../assets/images/Pp.png"),
       label: "Pa Pe Pi Po Pu",
     },
     {
       title: "Rr",
+      image: require("../../../assets/images/Rr.png"),
       label: "Ra Re Ri Ro Ru",
     },
     {
       title: "Ss",
+      image: require("../../../assets/images/Ss.png"),
       label: "Sa Se Si So Su",
     },
     {
       title: "Tt",
+      image: require("../../../assets/images/Tt.png"),
       label: "Ta Te Ti To Tu",
     },
     {
       title: "Ww",
+      image: require("../../../assets/images/Ww.png"),
       label: "Wa We Wi Wo Wu",
     },
     {
       title: "Yy",
+      image: require("../../../assets/images/Yy.png"),
       label: "Ya Ye Yi Yo Yu",
     },
   ];
 
   return (
-    <View
+    <ImageBackground
+      source={require("../../../assets/images/SILID.png")}
       style={{
         flex: 1,
         backgroundColor: "#fff",
       }}
-    >
-      <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
       >
-        <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
-        </Pressable>
-        <Text>ABAKAYA</Text>
-      </View>
+       <View style={styles.navbar}>
+      <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+      </Pressable>
+      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+    </View>
+
       <ScrollView>
         <View
           style={{
@@ -139,15 +149,37 @@ export default function Katinig() {
                   alignItems: "center",
                   justifyContent: "center",
                   padding: 12,
+                  position: "relative",
                 }}
               >
-                <Text style={{ fontSize: 32, color: "#fff" }}>{p.title}</Text>
+                <Text style={{ fontSize: 32, color: "#fff", marginBottom: 100, }}>{p.title}</Text>
                 <Text style={{ fontSize: 16, color: "#fff" }}>{p.label}</Text>
+                <Image
+                  source={p.image}
+                  style={{
+                  position: "absolute", 
+                  width: 100,
+                  height: 100,
+                  }}
+                    resizeMode="cover"
+                />
               </View>
             ))}
           </View>
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 }
+
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+});
