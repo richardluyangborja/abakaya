@@ -1,4 +1,4 @@
-import { useRouter } from "expo-router";
+import { useRouter } from "expo-router"; 
 import { Pressable, ScrollView, Text, View } from "react-native";
 
 export default function PamilyangNagtutulungan() {

@@ -1,5 +1,6 @@
 import { RelativePathString, useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, StyleSheet, ImageBackground, Image } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function MaiklingKwento() {
   const router = useRouter();
@@ -19,25 +20,17 @@ export default function MaiklingKwento() {
   ];
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-      }}
-    >
-      <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
-      >
-        <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
-        </Pressable>
-        <Text>ABAKAYA</Text>
-      </View>
+    <ImageBackground 
+              source={require('../../../assets/images/BG3.png')}
+               style={styles.background}
+            >
+      <View style={styles.navbar}>
+            <Pressable onPress={() => router.navigate("/Leksyon")}>
+              <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+            </Pressable>
+            <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+          </View>
+
       <ScrollView>
         <View
           style={{
@@ -85,6 +78,21 @@ export default function MaiklingKwento() {
           ))}
         </View>
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 }
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  background: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+});

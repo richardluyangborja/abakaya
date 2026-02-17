@@ -10,51 +10,61 @@ export default function Numero() {
       title: "1",
       image: require("../../assets/images/ISA.png"),
       label: "Isa",
+      borderColor: "#D98A54",
     },
     {
       title: "2",
       image: require("../../assets/images/DALAWA.png"),
       label: "Dalawa",
+      borderColor: "#C7AAD0",
     },
     {
       title: "3",
       image: require("../../assets/images/TATLO.png"),
       label: "Tatlo",
+      borderColor: "#EAB562",
     },
     {
       title: "4",
       image: require("../../assets/images/APAT.png"),
       label: "Apat",
+      borderColor: "#C06E45",
     },
     {
       title: "5",
       image: require("../../assets/images/LIMA.png"),
       label: "Lima",
+      borderColor: "#B193B9",
     },
     {
       title: "6",
       image: require("../../assets/images/ANIM.png"),
       label: "Anim",
+      borderColor: "#F5C86D",
     },
     {
       title: "7",
       image: require("../../assets/images/PITO.png"),
       label: "Pito",
+      borderColor: "#B5795F",
     },
     {
       title: "8",
       image: require("../../assets/images/WALO.png"),
       label: "Walo",
+      borderColor: "#E8B367",
     },
     {
       title: "9",
       image: require("../../assets/images/SIYAM.png"),
       label: "Siyam",
+      borderColor: "#E3BD72",
     },
     {
       title: "10",
       image: require("../../assets/images/SAMPU.png"),
       label: "Sampu",
+      borderColor: "#D0803C",
     },
   ];
 
@@ -110,9 +120,9 @@ export default function Numero() {
                 gap: 24,
                 backgroundColor: "#fff",
                 borderWidth: 5,
-                borderColor: "#B3916E",
                 width: "90%",
                 padding: 24,
+                borderColor: n.borderColor,
               }}
             >
               <Text style={{ color: "#000", fontSize: 100, fontWeight: "bold" }}>
