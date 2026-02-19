@@ -1,5 +1,7 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, StyleSheet, Image } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
+
 
 export default function AlamatNgMangga() {
   const router = useRouter();
@@ -11,19 +13,13 @@ export default function AlamatNgMangga() {
         backgroundColor: "#fff",
       }}
     >
-      <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
-      >
-        <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
-        </Pressable>
-        <Text>ABAKAYA</Text>
-      </View>
+      <View style={styles.navbar}>
+      <Pressable onPress={() => router.back()}>
+        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+      </Pressable>
+      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+    </View>
+
       <ScrollView>
         <View
           style={{
@@ -32,43 +28,21 @@ export default function AlamatNgMangga() {
             gap: 20,
           }}
         >
+          <Image
+            source={require("../../../../assets/images/MANGGA.png")}
+            style={styles.image}
+          />
+
           <Text
             style={{
               fontSize: 24,
               fontWeight: "bold",
+              marginTop: 200,
             }}
           >
             Alamat ng Mangga
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 24,
-            }}
-          >
-            <Pressable
-              style={{
-                borderColor: "#333",
-                borderWidth: 1,
-                paddingVertical: 8,
-                paddingHorizontal: 16,
-                borderRadius: 20,
-              }}
-            >
-              <Text>Pakinggan</Text>
-            </Pressable>
-            <Pressable
-              style={{
-                borderColor: "#333",
-                borderWidth: 1,
-                paddingVertical: 8,
-                paddingHorizontal: 16,
-                borderRadius: 20,
-              }}
-            >
-              <Text>Panoorin</Text>
-            </Pressable>
-          </View>
+
           <View style={{ gap: 20 }}>
             <Text style={{ fontSize: 16, textAlign: "justify" }}>
               Noong unang panahon, may isang haring kilala sa pagiging sobrang
@@ -148,3 +122,21 @@ export default function AlamatNgMangga() {
     </View>
   );
 }
+
+
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  image: {
+    position: "absolute",
+    width: 360,
+    height: 200,
+  },
+});
