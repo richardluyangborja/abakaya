@@ -19,10 +19,22 @@ export default function App() {
     >
       <Text style={styles.text_abakaya}>ABAKAYA!</Text>
 
-      <Image
-        source={require("../assets/images/AGILA.png")}
-        style={styles.profile}
-      />
+      {/* paayos nalang style kung mgulo boy^ ^ */}
+      <Pressable
+        onPress={() => router.navigate("/ChangeProfile")}
+        style={{
+          alignSelf: "flex-start",
+          marginLeft: 5,
+          zIndex: 1000,
+          width: 60,
+          height: 60,
+        }}
+      >
+        <Image
+          source={require("../assets/images/AGILA.png")}
+          style={styles.profile}
+        />
+      </Pressable>
 
       <Feather
         style={styles.settings}
@@ -77,7 +89,7 @@ const styles = StyleSheet.create({
     width: 60,
     borderRadius: 100,
     top: 0,
-    zIndex: 1,
+    zIndex: 500,
     backgroundColor: "#000",
   },
   settings: {

@@ -144,14 +144,17 @@ export default function MadaliPagsusulitNumero() {
           paddingVertical: 16,
         }}
       >
-        <Text>Avatar</Text>
+        <Pressable onPress={() => router.back()}>
+          <Text>Back</Text>
+        </Pressable>
+        <Text>Madali Level</Text>
         <View
           style={{
             flexDirection: "row",
             gap: 24,
           }}
         >
-          <Text>Madali Level</Text>
+          <Text>Avatar</Text>
           <Text>Settings</Text>
         </View>
       </View>
@@ -212,7 +215,7 @@ export default function MadaliPagsusulitNumero() {
         {Array.from({ length: correctAnswer }).map((_, index) => (
           <View key={index}>
             {fruit.image ? (
-              <Image source={fruit.image} style={{}} />
+              <Image source={fruit.image} style={{}} /> // dito style boy
             ) : (
               <Text style={{ fontSize: 16 }}>{fruit.name}</Text>
             )}
