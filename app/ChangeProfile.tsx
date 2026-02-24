@@ -5,37 +5,45 @@ import {
   Pressable,
   Text,
   View,
+  StyleSheet
 } from "react-native";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function ChangeProfile() {
   const router = useRouter();
-  const avatars: { placeholder: string; image: null | ImageSourcePropType }[] =
-    [
-      {
-        placeholder: "agila",
-        image: null,
-      },
-      {
-        placeholder: "kalabaw",
-        image: null,
-      },
-      {
-        placeholder: "jeepney",
-        image: null,
-      },
-      {
-        placeholder: "perlas",
-        image: null,
-      },
-      {
-        placeholder: "sampaguita",
-        image: null,
-      },
-      {
-        placeholder: "Manga",
-        image: null,
-      },
-    ];
+  const avatars: { placeholder: string; image: null | ImageSourcePropType }[] = [
+    {
+      placeholder: "Agila",
+      image: require("../assets/images/AGILA.png"),
+    },
+    {
+      placeholder: "Kalabaw",
+      image: require("../assets/images/KALABAW_PROF.png"),
+    },
+    {
+      placeholder: "Jeepney",
+      image: require("../assets/images/JEEPNEY_PROF.png"),
+    },
+    {
+      placeholder: "Perlas",
+      image: require("../assets/images/PERLAS_PROF.png"),
+    },
+    {
+      placeholder: "Sampaguita",
+      image: require("../assets/images/SAMPAGUITA_PROF.png"),
+    },
+    {
+      placeholder: "Manga",
+      image: require("../assets/images/MANGGA_PROF.png"),
+    },
+  ];
+
+  const avatarsForSelection = [
+    ...avatars.slice(1), 
+    avatars[0],
+  ];
+
   return (
     <View
       style={{
@@ -43,20 +51,13 @@ export default function ChangeProfile() {
         backgroundColor: "#0075EF",
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          gap: 24,
-          paddingHorizontal: 16,
-          paddingTop: 28,
-          paddingBottom: 16,
-        }}
-      >
+      <View style={styles.navbar}>
         <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
-        <Text>Change Profile</Text>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
+
       <View
         style={{
           flexDirection: "row",
@@ -68,7 +69,7 @@ export default function ChangeProfile() {
         }}
       >
         {avatars.at(0)?.image ? (
-          <Image source={avatars.at(0)!.image!} />
+          <Image source={avatars.at(0)!.image!} style={styles.avatarImage} />
         ) : (
           <View
             style={{
@@ -84,15 +85,19 @@ export default function ChangeProfile() {
             backgroundColor: "#FFE18B",
             paddingHorizontal: 12,
             paddingVertical: 5,
-            width: 210,
+            width: 180,
+            borderRadius: 5,
           }}
         >
           <Text>Pangalan</Text>
+          <MaterialCommunityIcons style={{ right: 0, position: "absolute", top: 2, }} name="pencil-outline" size={20} color="black" />
         </View>
       </View>
-      <Text style={{ color: "#fff", marginTop: 16, marginLeft: 24 }}>
-        Pumili ng iyong avatar.
+
+      <Text style={{ color: "#fff", marginTop: 16, marginLeft: 24, textAlign: 'center'}}>
+        Pumili ng iyong Avatar.
       </Text>
+
       <View
         style={{
           flexDirection: "row",
@@ -106,12 +111,13 @@ export default function ChangeProfile() {
           justifyContent: "center",
           backgroundColor: "#fff",
           marginTop: 8,
+          borderRadius: 8,
         }}
       >
-        {avatars.map((a) => (
+        {avatarsForSelection.map((a) => (
           <View key={a.placeholder} style={{ gap: 16 }}>
             {a.image ? (
-              <Image source={a.image} />
+              <Image source={a.image} style={styles.avatarImage} />
             ) : (
               <View
                 style={{
@@ -126,6 +132,7 @@ export default function ChangeProfile() {
           </View>
         ))}
       </View>
+
       <Pressable onPress={() => router.navigate("/")}>
         <Text
           style={{
@@ -134,7 +141,8 @@ export default function ChangeProfile() {
             color: "#fff",
             paddingHorizontal: 10,
             paddingVertical: 8,
-            marginTop: 32,
+            marginTop: 25,
+            borderRadius: 5,
           }}
         >
           Save
@@ -143,3 +151,19 @@ export default function ChangeProfile() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  avatarImage: {
+    height: 100,
+    width: 100,
+    borderRadius: 50,
+  },
+});

@@ -1,32 +1,35 @@
 import { useEffect, useState } from "react";
-import { View, Text, Pressable, Image, Modal } from "react-native";
+import { View, Text, Pressable, Image, Modal, StyleSheet, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
+import Ionicons from '@expo/vector-icons/Ionicons';
+import Feather from "@expo/vector-icons/Feather";
 
 const prutas = [
   {
     id: 1,
     name: "Saging",
-    image: null,
+    image: require("../../../assets/images/manggo.png"),
+    
   },
   {
     id: 2,
     name: "Mangga",
-    image: null,
+    image: require("../../../assets/images/letchon.png"),
   },
   {
     id: 3,
     name: "Mansanas",
-    image: null,
+    image: require("../../../assets/images/apple.png"),
   },
   {
     id: 4,
     name: "Pinya",
-    image: null,
+    image: require("../../../assets/images/sorbetes.png"),
   },
   {
     id: 5,
     name: "Orange",
-    image: null,
+    image: require("../../../assets/images/cray.png"),
   },
 ];
 
@@ -131,31 +134,22 @@ export default function MadaliPagsusulitNumero() {
     <View
       style={{
         flex: 1,
-        backgroundColor: "#fff",
+        backgroundColor: "#E3BD72",
       }}
     >
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignContent: "center",
-          paddingHorizontal: 16,
-          paddingTop: 24,
-          paddingVertical: 16,
-        }}
-      >
+      <View style={styles.navbar}>
         <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
-        <Text>Madali Level</Text>
+        <Text style={{ color: "#fff", marginTop: 3 }}>Madali Level</Text>
         <View
           style={{
             flexDirection: "row",
             gap: 24,
           }}
         >
-          <Text>Avatar</Text>
-          <Text>Settings</Text>
+          <Text style={{color: "#fff", top: 3, marginLeft: 110,}}>Avatar</Text>
+          <Feather style={{ color: "#ff0000", position: "absolute", marginLeft: 180, }} name="settings" size={24} />
         </View>
       </View>
       <Text
@@ -178,6 +172,10 @@ export default function MadaliPagsusulitNumero() {
       >
         Turn {turn} / {maxTurns}
       </Text>
+        <Image
+        source={require("../../../assets/images/num_quiztree.png")}
+        style={styles.quiztree}
+        />
 
       <Text
         style={{
@@ -185,6 +183,7 @@ export default function MadaliPagsusulitNumero() {
           fontWeight: "semibold",
           color: "#CC0001",
           alignSelf: "center",
+          top: 80,
         }}
       >
         Time Left: {timeLeft}s
@@ -196,6 +195,7 @@ export default function MadaliPagsusulitNumero() {
           fontWeight: "semibold",
           color: "#000",
           alignSelf: "center",
+          top: 150,
         }}
       >
         Bilangin at piliin ang tamang sagot.
@@ -210,12 +210,17 @@ export default function MadaliPagsusulitNumero() {
           gap: 8,
           marginVertical: 48,
           paddingHorizontal: 16,
+          top: 200,
         }}
       >
         {Array.from({ length: correctAnswer }).map((_, index) => (
           <View key={index}>
             {fruit.image ? (
-              <Image source={fruit.image} style={{}} /> // dito style boy
+              <Image source={fruit.image} 
+              style={{
+                width: 100, 
+                height: 100,
+              }} /> // dito style boy
             ) : (
               <Text style={{ fontSize: 16 }}>{fruit.name}</Text>
             )}
@@ -234,7 +239,7 @@ export default function MadaliPagsusulitNumero() {
         {choices.map((choice) => (
           <Pressable
             key={choice}
-            style={{ backgroundColor: "#eee", padding: 16, borderRadius: 20 }}
+            style={{ backgroundColor: "#eee", padding: 16, borderRadius: 20, top: 190 }}
             onPress={() => handleAnswer(choice)}
           >
             <Text style={{ fontSize: 36, fontWeight: "bold" }}>{choice}</Text>
@@ -242,7 +247,7 @@ export default function MadaliPagsusulitNumero() {
         ))}
       </View>
 
-      <Text style={{ fontSize: 20, fontWeight: "semibold", marginLeft: 16 }}>
+      <Text style={{ fontSize: 20, fontWeight: "semibold", marginLeft: 16, top: 200 }}>
         Score: {score}
       </Text>
       <Modal visible={gameOver} transparent animationType="fade">
@@ -313,3 +318,21 @@ export default function MadaliPagsusulitNumero() {
     </View>
   );
 }
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  quiztree: {
+    position: "absolute",
+    width: 380,
+    height: 300,
+    left: -18,
+    top: 80,
+  },
+});

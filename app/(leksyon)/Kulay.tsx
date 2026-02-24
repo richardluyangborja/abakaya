@@ -1,65 +1,63 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, Image, StyleSheet, ImageBackground } from "react-native";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function Kulay() {
   const router = useRouter();
   const kulay = [
     {
-      title: "Pula",
-      // image: "path",
+      image: require("../../assets/images/PULA.png"),
     },
     {
-      title: "Kahel",
+      image: require("../../assets/images/KAHEL.png"),
     },
     {
-      title: "Dilaw",
+      image: require("../../assets/images/DILAW.png"),
     },
     {
-      title: "Luntian",
+      image: require("../../assets/images/LUNTIAN.png"),
     },
     {
-      title: "Asul",
+      image: require("../../assets/images/ASUL.png"),
     },
     {
-      title: "Lila",
+     image: require("../../assets/images/LILA.png"),
     },
     {
-      title: "Rosas",
+      image: require("../../assets/images/ROSAS.png"),
     },
     {
-      title: "Kayumanggi",
+      image: require("../../assets/images/KAYUMAGGI.png"),
     },
     {
-      title: "Abo",
+      image: require("../../assets/images/ABO.png"),
     },
     {
-      title: "Puti",
+      image: require("../../assets/images/PUTI.png"),
     },
     {
-      title: "Itim",
+      image: require("../../assets/images/ITIM.png"),
     },
   ];
 
   return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-      }}
-    >
-      <View
+    <ImageBackground 
+                  source={require('../../assets/images/KULAY BG.png')}
+                   style={styles.background}
+                >
+                  <View
         style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
+          ...StyleSheet.absoluteFillObject,
+          backgroundColor: "rgba(255,255,255,0.2)",
         }}
-      >
-        <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
-        </Pressable>
-        <Text>ABAKAYA</Text>
-      </View>
+      />
+      <View style={styles.navbar}>
+      <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+      </Pressable>
+      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+    </View>
+
       <ScrollView>
         <View
           style={{
@@ -91,7 +89,6 @@ export default function Kulay() {
           </View>
           {kulay.map((n) => (
             <View
-              key={n.title}
               style={{
                 flexDirection: "row",
                 gap: 24,
@@ -100,15 +97,42 @@ export default function Kulay() {
                 borderRadius: 20,
                 width: "100%",
                 padding: 24,
+                marginBottom: 40,
               }}
             >
               <Text style={{ color: "#000", fontSize: 44, fontWeight: "bold" }}>
-                {n.title}
               </Text>
+              <Image
+                source={n.image}
+                style={{
+                position: "absolute",
+                width: 333,
+                height: 140,
+                
+                }}
+                resizeMode="cover"
+              />
             </View>
           ))}
         </View>
       </ScrollView>
-    </View>
+      </ImageBackground>
   );
 }
+
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  background: {
+    flex: 1,
+    backgroundColor: "#fff",
+    opacity: 50,
+  },
+});

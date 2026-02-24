@@ -12,7 +12,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 export default function MaiklingKwento() {
   const router = useRouter();
   const pages = [
-    {
+    { 
       label: "Lugar",
       href: "/Lugar",
       image: require("../../../assets/images/LUGAR.png"),

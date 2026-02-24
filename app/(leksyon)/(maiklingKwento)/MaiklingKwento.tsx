@@ -15,14 +15,17 @@ export default function MaiklingKwento() {
     {
       label: "Ang Batang Mabait at Magalang",
       href: "/AngBatangMabaitAtMagalang",
+      image: require("../../../assets/images/ANG BATANG MABAIT AT MAGALANG.png"),
     },
     {
       label: "Ang Batang Mahilig Mag-Cellphone",
       href: "/AngBatangMahiligMagCellphone",
+      image: require("../../../assets/images/ANG BATANG MAHILIG MAG CELLPHONE.png"),
     },
     {
       label: "Ang Batang Mahilig Magsinungaling",
       href: "/AngBatangMahiligMagsinungaling",
+      image: require("../../../assets/images/ANG BATANG MAHILIG MAGSINUNGALING.png"),
     },
   ];
 
@@ -71,16 +74,21 @@ export default function MaiklingKwento() {
             <Pressable
               key={p.label}
               style={{
-                backgroundColor: "#EDB111",
+                
                 borderRadius: 20,
                 width: "100%",
                 padding: 24,
               }}
               onPress={() => router.navigate(p.href as RelativePathString)}
             >
-              <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24 }}>
-                {p.label}
-              </Text>
+              <ImageBackground
+                source={p.image}
+                style={styles.imageBackground}
+                imageStyle={styles.imageStyle}
+              >
+                <View style={styles.overlay} />
+                <Text style={styles.text}>{p.label}</Text>
+              </ImageBackground>
             </Pressable>
           ))}
         </View>
@@ -101,5 +109,31 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+    imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    width: "100%",
+    height: "250%",
+    marginBottom: 30,
+  },
+  imageStyle: {
+    borderRadius: 20,
+  },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(0, 0, 0, 0.2)",
+    borderRadius: 20,
+    width: "100%",
+    height: "250%",
+  },
+  text: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 24,
+    textAlign: 'center',
+    top: 45,
   },
 });
