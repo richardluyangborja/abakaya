@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
-import { View, Text, Pressable, Image, Modal, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  Image,
+  Modal,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
 import { useRouter } from "expo-router";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
 
 const prutas = [
@@ -9,7 +17,6 @@ const prutas = [
     id: 1,
     name: "Saging",
     image: require("../../../assets/images/manggo.png"),
-    
   },
   {
     id: 2,
@@ -42,7 +49,7 @@ const feedbacks = [
 ];
 
 const maxTurns = 5;
-const turnTime = 2000;
+const turnTime = 20;
 
 function getRandomNumber(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -148,8 +155,12 @@ export default function MadaliPagsusulitNumero() {
             gap: 24,
           }}
         >
-          <Text style={{color: "#fff", top: 3, marginLeft: 110,}}>Avatar</Text>
-          <Feather style={{ color: "#ff0000", position: "absolute", marginLeft: 180, }} name="settings" size={24} />
+          <Text style={{ color: "#fff", top: 3, marginLeft: 110 }}>Avatar</Text>
+          <Feather
+            style={{ color: "#ff0000", position: "absolute", marginLeft: 180 }}
+            name="settings"
+            size={24}
+          />
         </View>
       </View>
       <Text
@@ -172,10 +183,10 @@ export default function MadaliPagsusulitNumero() {
       >
         Turn {turn} / {maxTurns}
       </Text>
-        <Image
+      <Image
         source={require("../../../assets/images/num_quiztree.png")}
         style={styles.quiztree}
-        />
+      />
 
       <Text
         style={{
@@ -191,7 +202,7 @@ export default function MadaliPagsusulitNumero() {
 
       <Text
         style={{
-          fontSize: 20,
+          fontSize: 16,
           fontWeight: "semibold",
           color: "#000",
           alignSelf: "center",
@@ -216,11 +227,13 @@ export default function MadaliPagsusulitNumero() {
         {Array.from({ length: correctAnswer }).map((_, index) => (
           <View key={index}>
             {fruit.image ? (
-              <Image source={fruit.image} 
-              style={{
-                width: 100, 
-                height: 100,
-              }} /> // dito style boy
+              <Image
+                source={fruit.image}
+                style={{
+                  width: 70,
+                  height: 70,
+                }}
+              /> // dito style boy
             ) : (
               <Text style={{ fontSize: 16 }}>{fruit.name}</Text>
             )}
@@ -239,7 +252,12 @@ export default function MadaliPagsusulitNumero() {
         {choices.map((choice) => (
           <Pressable
             key={choice}
-            style={{ backgroundColor: "#eee", padding: 16, borderRadius: 20, top: 190 }}
+            style={{
+              backgroundColor: "#eee",
+              padding: 16,
+              borderRadius: 20,
+              top: 190,
+            }}
             onPress={() => handleAnswer(choice)}
           >
             <Text style={{ fontSize: 36, fontWeight: "bold" }}>{choice}</Text>
@@ -247,7 +265,14 @@ export default function MadaliPagsusulitNumero() {
         ))}
       </View>
 
-      <Text style={{ fontSize: 20, fontWeight: "semibold", marginLeft: 16, top: 200 }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: "semibold",
+          marginLeft: 16,
+          top: 200,
+        }}
+      >
         Score: {score}
       </Text>
       <Modal visible={gameOver} transparent animationType="fade">
@@ -319,7 +344,7 @@ export default function MadaliPagsusulitNumero() {
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -336,3 +361,4 @@ const styles = StyleSheet.create ({
     top: 80,
   },
 });
+

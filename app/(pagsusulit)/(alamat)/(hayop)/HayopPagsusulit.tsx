@@ -9,47 +9,31 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Alamat() {
+export default function HayopPagsusulit() {
   const router = useRouter();
   const pages = [
     {
-      label: "Lugar",
-      href: "/Lugar",
-      image: require("../../../assets/images/LUGAR.png"),
+      label: "Alamat ng Aso",
+      href: "/AlamatNgAsoPagsusulit",
+      image: require("../../../../assets/images/LUGAR.png"),
     },
     {
-      label: "Prutas",
-      href: "/Prutas",
-      image: require("../../../assets/images/PRUTAS.png"),
-    },
-    {
-      label: "Gulay",
-      href: "/Gulay",
-      image: require("../../../assets/images/GULAY.png"),
-    },
-    {
-      label: "Hayop",
-      href: "/Hayop",
-      image: require("../../../assets/images/HAYOP.png"),
-    },
-    // WARN: bagay -> halaman
-    {
-      label: "Halaman",
-      href: "/Halaman",
-      image: require("../../../assets/images/BAGAY.png"),
+      label: "Alamat ng Butiki",
+      href: "/AlamatNgButikiPagsusulit",
+      image: require("../../../../assets/images/PRUTAS.png"),
     },
   ];
 
   return (
     <ImageBackground
-      source={require("../../../assets/images/NUMERO BG.png")}
+      source={require("../../../../assets/images/NUMERO BG.png")}
       style={{
         flex: 1,
         backgroundColor: "#fff",
       }}
     >
       <View style={styles.navbar}>
-        <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Pressable onPress={() => router.back()}>
           <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
         <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
@@ -80,7 +64,7 @@ export default function Alamat() {
                 fontSize: 20,
               }}
             >
-              Alamat
+              Hayop
             </Text>
           </View>
           {pages.map((p) => (

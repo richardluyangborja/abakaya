@@ -9,33 +9,33 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Alamat() {
+export default function AlamatPagsusulit() {
   const router = useRouter();
   const pages = [
     {
       label: "Lugar",
-      href: "/Lugar",
+      href: "/LugarrPagsusulit",
       image: require("../../../assets/images/LUGAR.png"),
     },
     {
       label: "Prutas",
-      href: "/Prutas",
+      href: "/PrutasPagsusulit",
       image: require("../../../assets/images/PRUTAS.png"),
     },
     {
       label: "Gulay",
-      href: "/Gulay",
+      href: "/GulayPagsusulit",
       image: require("../../../assets/images/GULAY.png"),
     },
     {
       label: "Hayop",
-      href: "/Hayop",
+      href: "/HayopPagsusulit",
       image: require("../../../assets/images/HAYOP.png"),
     },
     // WARN: bagay -> halaman
     {
       label: "Halaman",
-      href: "/Halaman",
+      href: "/HalamanPagsusulit",
       image: require("../../../assets/images/BAGAY.png"),
     },
   ];

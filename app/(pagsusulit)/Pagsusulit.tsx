@@ -6,9 +6,9 @@ import {
   Text,
   View,
   StyleSheet,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Pagsusulit() {
   const router = useRouter();
@@ -18,22 +18,27 @@ export default function Pagsusulit() {
       href: "/PagsusulitNumeroLevel",
       image: require("../../assets/images/NUMERO.png"),
     },
+    {
+      label: "Alamat",
+      href: "/AlamatPagsusulit",
+      image: require("../../assets/images/NUMERO.png"),
+    },
   ];
 
   return (
     <ImageBackground
-              source={require("../../assets/images/SILID.png")}
-              style={{
-                flex: 1,
-                backgroundColor: "#fff",
-              }}
-            >
+      source={require("../../assets/images/SILID.png")}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+      }}
+    >
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.back()}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <View
         style={{
@@ -50,7 +55,7 @@ export default function Pagsusulit() {
             backgroundColor: "#CC0000",
             borderRadius: 20,
             top: 40,
-            position: "absolute"
+            position: "absolute",
           }}
         >
           <Text
@@ -84,7 +89,14 @@ export default function Pagsusulit() {
                 height: 100,
               }}
             />
-            <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24, paddingLeft: 90, }}>
+            <Text
+              style={{
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: 24,
+                paddingLeft: 90,
+              }}
+            >
               {p.label}
             </Text>
           </Pressable>
@@ -94,7 +106,7 @@ export default function Pagsusulit() {
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -104,3 +116,4 @@ const styles = StyleSheet.create ({
     gap: 16,
   },
 });
+

@@ -1,5 +1,6 @@
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
+import { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,10 +8,12 @@ import {
   ImageBackground,
   Image,
   Pressable,
+  Modal,
 } from "react-native";
 
 export default function App() {
   const router = useRouter();
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   return (
     <ImageBackground
@@ -36,12 +39,17 @@ export default function App() {
         />
       </Pressable>
 
-      <Feather
-        style={styles.settings}
-        name="settings"
-        size={45}
-        color="black"
-      />
+      <Pressable
+        style={{
+          position: "absolute",
+          top: 40,
+          right: 20,
+          zIndex: 1000,
+        }}
+        onPress={() => setSettingsOpen(true)}
+      >
+        <Feather style={{}} name="settings" size={45} color="black" />
+      </Pressable>
 
       <Text style={styles.alamin}>Alamin, Aralin, Kayang-kaya</Text>
 
@@ -55,6 +63,132 @@ export default function App() {
           START
         </Text>
       </Pressable>
+
+      <Modal
+        visible={settingsOpen}
+        animationType="slide"
+        transparent
+        onRequestClose={() => setSettingsOpen(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              position: "relative",
+              backgroundColor: "#023D7A",
+              padding: 20,
+              borderRadius: 12,
+              borderWidth: 3,
+              borderColor: "#fff",
+            }}
+          >
+            <Pressable
+              style={{ position: "absolute", top: 4, right: 10 }}
+              onPress={() => setSettingsOpen(false)}
+            >
+              <Text style={{ color: "#fff" }}>close</Text>
+            </Pressable>
+            <View style={{ padding: 20, flexDirection: "row", gap: 24 }}>
+              <View
+                style={{
+                  position: "relative",
+                  height: 160,
+                  width: 150,
+                  backgroundColor: "#EDB111",
+                  borderRadius: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    position: "absolute",
+                    color: "#fff",
+                    bottom: 10,
+                    fontSize: 20,
+                    fontWeight: "700",
+                    alignSelf: "center",
+                  }}
+                >
+                  On
+                </Text>
+              </View>
+              <View
+                style={{
+                  position: "relative",
+                  height: 160,
+                  width: 150,
+                  backgroundColor: "#EDB111",
+                  borderRadius: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    position: "absolute",
+                    color: "#fff",
+                    bottom: 10,
+                    fontSize: 20,
+                    fontWeight: "700",
+                    alignSelf: "center",
+                  }}
+                >
+                  Credits
+                </Text>
+              </View>
+            </View>
+            <View style={{ padding: 20, flexDirection: "row", gap: 24 }}>
+              <View
+                style={{
+                  position: "relative",
+                  height: 160,
+                  width: 150,
+                  backgroundColor: "#EDB111",
+                  borderRadius: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    position: "absolute",
+                    color: "#fff",
+                    bottom: 10,
+                    fontSize: 20,
+                    fontWeight: "700",
+                    alignSelf: "center",
+                  }}
+                >
+                  Privacy Policy
+                </Text>
+              </View>
+              <View
+                style={{
+                  position: "relative",
+                  height: 160,
+                  width: 150,
+                  backgroundColor: "#EDB111",
+                  borderRadius: 20,
+                }}
+              >
+                <Text
+                  style={{
+                    position: "absolute",
+                    color: "#fff",
+                    bottom: 10,
+                    fontSize: 20,
+                    fontWeight: "700",
+                    alignSelf: "center",
+                  }}
+                >
+                  Contact Us
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       <View style={styles.container}>
         <Image

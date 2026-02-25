@@ -1,6 +1,14 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, Image, StyleSheet, ImageBackground } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  ImageBackground,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Kulay() {
   const router = useRouter();
@@ -21,7 +29,7 @@ export default function Kulay() {
       image: require("../../assets/images/ASUL.png"),
     },
     {
-     image: require("../../assets/images/LILA.png"),
+      image: require("../../assets/images/LILA.png"),
     },
     {
       image: require("../../assets/images/ROSAS.png"),
@@ -41,22 +49,22 @@ export default function Kulay() {
   ];
 
   return (
-    <ImageBackground 
-                  source={require('../../assets/images/KULAY BG.png')}
-                   style={styles.background}
-                >
-                  <View
+    <ImageBackground
+      source={require("../../assets/images/KULAY BG.png")}
+      style={styles.background}
+    >
+      <View
         style={{
           ...StyleSheet.absoluteFillObject,
           backgroundColor: "rgba(255,255,255,0.2)",
         }}
       />
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.navigate("/Leksyon")}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <ScrollView>
         <View
@@ -87,8 +95,9 @@ export default function Kulay() {
               Kulay
             </Text>
           </View>
-          {kulay.map((n) => (
+          {kulay.map((n, i) => (
             <View
+              key={i}
               style={{
                 flexDirection: "row",
                 gap: 24,
@@ -100,15 +109,15 @@ export default function Kulay() {
                 marginBottom: 40,
               }}
             >
-              <Text style={{ color: "#000", fontSize: 44, fontWeight: "bold" }}>
-              </Text>
+              <Text
+                style={{ color: "#000", fontSize: 44, fontWeight: "bold" }}
+              ></Text>
               <Image
                 source={n.image}
                 style={{
-                position: "absolute",
-                width: 333,
-                height: 140,
-                
+                  position: "absolute",
+                  width: 333,
+                  height: 140,
                 }}
                 resizeMode="cover"
               />
@@ -116,12 +125,11 @@ export default function Kulay() {
           ))}
         </View>
       </ScrollView>
-      </ImageBackground>
+    </ImageBackground>
   );
 }
 
-
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -136,3 +144,4 @@ const styles = StyleSheet.create ({
     opacity: 50,
   },
 });
+
