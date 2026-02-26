@@ -9,22 +9,22 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function MaiklingKwento() {
+export default function MaiklingKwentoPagsusulit() {
   const router = useRouter();
   const pages = [
     {
       label: "Ang Batang Mabait at Magalang",
-      href: "/AngBatangMabaitAtMagalang",
+      href: "/AngBatangMabaitAtMagalangPagsusulit",
       image: require("../../../assets/images/ANG BATANG MABAIT AT MAGALANG.png"),
     },
     {
       label: "Ang Batang Mahilig Mag-Cellphone",
-      href: "/AngBatangMahiligMagCellphone",
+      href: "/AngBatangMahiligMagCellphonePagsusulit",
       image: require("../../../assets/images/ANG BATANG MAHILIG MAG CELLPHONE.png"),
     },
     {
       label: "Ang Batang Mahilig Magsinungaling",
-      href: "/AngBatangMahiligMagsinungaling",
+      href: "/AngBatangMahiligMagsinungalingPagsusulit",
       image: require("../../../assets/images/ANG BATANG MAHILIG MAGSINUNGALING.png"),
     },
   ];

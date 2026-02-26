@@ -23,6 +23,11 @@ export default function Pagsusulit() {
       href: "/AlamatPagsusulit",
       image: require("../../assets/images/NUMERO.png"),
     },
+    {
+      label: "Maikling Kwento",
+      href: "/MaiklingKwentoPagsusulit",
+      image: require("../../assets/images/NUMERO.png"),
+    },
   ];
 
   return (
@@ -116,4 +121,3 @@ const styles = StyleSheet.create({
     gap: 16,
   },
 });
-
