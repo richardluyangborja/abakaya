@@ -6,7 +6,8 @@ import {
   Text,
   View,
   ImageBackground,
-  StyleSheet
+  StyleSheet,
+  ScrollView
 } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -66,6 +67,7 @@ export default function Leksyon() {
         <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
 
+<ScrollView>
   <View
     style={{
       flex: 1,
@@ -101,7 +103,7 @@ export default function Leksyon() {
           backgroundColor: "#EDB111",
           borderRadius: 20,
           width: "100%",
-          padding: 34,
+          padding: 40,
           overflow: "hidden",
         }}
         onPress={() => router.navigate(p.href as RelativePathString)}
@@ -121,8 +123,8 @@ export default function Leksyon() {
       </Pressable>
     ))}
   </View>
+  </ScrollView>
 </ImageBackground>
-
   );
 }
 

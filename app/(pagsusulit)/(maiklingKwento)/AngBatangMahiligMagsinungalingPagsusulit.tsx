@@ -7,7 +7,13 @@ import {
   Pressable,
   Modal,
   Image,
+  StyleSheet, 
+  ImageBackground,
+  Animated
 } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import Feather from "@expo/vector-icons/Feather";
+
 
 const TIME_PER_QUESTION = 20;
 
@@ -62,6 +68,8 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
+  const [progress, setProgress] = useState(new Animated.Value(1));
+
   const currentQuestion = QUESTIONS[currentIndex];
 
   useEffect(() => {
@@ -73,6 +81,13 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
     }
 
     const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
+
+    Animated.timing(progress, {
+                  toValue: timeLeft / TIME_PER_QUESTION,
+                  duration: 1000,
+                  useNativeDriver: false, 
+                }).start();
+
     return () => clearTimeout(timer);
   }, [timeLeft, finished]);
 
@@ -113,6 +128,13 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
   };
 
   return (
+    <ImageBackground
+                    source={require("../../../assets/images/quiz_bg.png")}
+                    style={{
+                      flex: 1,
+                      backgroundColor: "#fff",
+                    }}
+                  >
     <View style={{ flex: 1 }}>
       <Modal visible={finished} transparent animationType="fade">
         <View
@@ -181,23 +203,39 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
       </Modal>
 
       {/* HEADER */}
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          padding: 24,
-        }}
-      >
-        <View style={{ flexDirection: "row", gap: 12 }}>
-          <Pressable onPress={() => router.back()}>
-            <Text>Back</Text>
-          </Pressable>
-          <Text>Avatar logo</Text>
-        </View>
-        <Pressable>
-          <Text>Settings</Text>
+     <View style={styles.navbar}>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>Avatar</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            gap: 24,
+          }}
+        >
+          <Feather
+            style={{ color: "#ff0000", position: "absolute", marginLeft: 220 }}
+            name="settings"
+            size={24}
+          />
+        </View>
       </View>
+      
+      <Image
+        source={require("../../../assets/images/ANG BATANG MABAIT AT MAGALANG.png")}
+        style={{
+          height: 160,
+          width: 280,
+          position: "absolute",
+          alignContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+          top: 250,
+          opacity: 0.8,
+        }}
+      />
+      
 
       <Text
         style={{
@@ -220,22 +258,32 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
         {currentIndex + 1}/{QUESTIONS.length}
       </Text>
 
-      <Text
-        style={{
-          fontSize: 22,
-          alignSelf: "center",
-          marginBottom: 16,
-        }}
-      >
-        {timeLeft}
-      </Text>
+      {/* BAR ITU STAYL */}
+              <View style={styles.progressBarContainer}>
+                <Animated.View
+                  style={[
+                    styles.progressBar,
+                    {
+                      width: progress.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: ["0%", "100%"],
+                      }),
+                    },
+                  ]}
+                />
+              </View>
 
-      <View style={{ paddingHorizontal: 24 }}>
+      <View style={{ paddingHorizontal: 24, }}>
         <Text
           style={{
             fontSize: 22,
-            fontWeight: "bold",
-            marginBottom: 20,
+              fontWeight: "bold",
+              marginBottom: 20,
+              top: 100,
+              width: 280,
+              textAlign: "center",
+              left: 18,
+              color: "#FFE18B",
           }}
         >
           {currentQuestion.question}
@@ -260,6 +308,7 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
                 borderRadius: 10,
                 marginBottom: 12,
                 backgroundColor: bg,
+                top: 200,
               }}
               onPress={() => handleChoice(index)}
             >
@@ -269,5 +318,32 @@ export default function AngBatangMahiligMagsinungalingPagsusulit() {
         })}
       </View>
     </View>
+    </ImageBackground>
   );
 }
+
+
+const styles = StyleSheet.create ({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  progressBarContainer: {
+    height: 15,
+    width: "80%",
+    backgroundColor: "#FFE18B", 
+    borderRadius: 5,
+    marginTop: 20,
+    marginBottom: 20,
+    alignSelf: "center",
+  },
+  progressBar: {
+    height: "100%",
+    backgroundColor: "#CC0001",
+    borderRadius: 5,
+  },
+});

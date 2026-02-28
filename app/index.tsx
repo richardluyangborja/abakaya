@@ -82,24 +82,25 @@ export default function App() {
             style={{
               position: "relative",
               backgroundColor: "#023D7A",
-              padding: 20,
               borderRadius: 12,
               borderWidth: 3,
               borderColor: "#fff",
+              width: 320,
+              height: 400,
             }}
           >
             <Pressable
               style={{ position: "absolute", top: 4, right: 10 }}
               onPress={() => setSettingsOpen(false)}
             >
-              <Text style={{ color: "#fff" }}>close</Text>
+              <Feather name="x-circle" size={24} color="red" />
             </Pressable>
-            <View style={{ padding: 20, flexDirection: "row", gap: 24 }}>
+            <View style={{ padding: 20, flexDirection: "row", gap: 24, top: 30, }}>
               <View
                 style={{
                   position: "relative",
-                  height: 160,
-                  width: 150,
+                  height: 125,
+                  width: 125,
                   backgroundColor: "#EDB111",
                   borderRadius: 20,
                 }}
@@ -108,20 +109,26 @@ export default function App() {
                   style={{
                     position: "absolute",
                     color: "#fff",
-                    bottom: 10,
                     fontSize: 20,
                     fontWeight: "700",
                     alignSelf: "center",
-                  }}
+                    height: 120,
+                    width: 120,
+                    textAlign: "center"
+                  }}  
                 >
+                  <Image
+                  source={require("../assets/images/MUSIC.png")}
+                  style={{top: 0, left: 0, }}
+                />
                   On
                 </Text>
               </View>
               <View
                 style={{
                   position: "relative",
-                  height: 160,
-                  width: 150,
+                  height: 125,
+                  width: 125,
                   backgroundColor: "#EDB111",
                   borderRadius: 20,
                 }}
@@ -134,8 +141,15 @@ export default function App() {
                     fontSize: 20,
                     fontWeight: "700",
                     alignSelf: "center",
+                    height: 120,
+                    width: 120,
+                    textAlign: "center"
                   }}
                 >
+                  <Image
+                  source={require("../assets/images/CREDITS.png")}
+                  style={{top: 0, left: 0, }}
+                />
                   Credits
                 </Text>
               </View>
@@ -143,9 +157,10 @@ export default function App() {
             <View style={{ padding: 20, flexDirection: "row", gap: 24 }}>
               <View
                 style={{
+                  top: 30,
                   position: "relative",
-                  height: 160,
-                  width: 150,
+                  height: 125,
+                  width: 125,
                   backgroundColor: "#EDB111",
                   borderRadius: 20,
                 }}
@@ -158,21 +173,30 @@ export default function App() {
                     fontSize: 20,
                     fontWeight: "700",
                     alignSelf: "center",
+                    height: 120,
+                    width: 120,
+                    textAlign: "center"
                   }}
                 >
+                  <Image
+                  source={require("../assets/images/PRIVACY POLICY.png")}
+                  style={{top: 0, left: 0, }}
+                />
                   Privacy Policy
                 </Text>
               </View>
               <View
                 style={{
+                  top: 30,
                   position: "relative",
-                  height: 160,
-                  width: 150,
+                  height: 125,
+                  width: 125,
                   backgroundColor: "#EDB111",
                   borderRadius: 20,
                 }}
               >
                 <Text
+                
                   style={{
                     position: "absolute",
                     color: "#fff",
@@ -180,8 +204,14 @@ export default function App() {
                     fontSize: 20,
                     fontWeight: "700",
                     alignSelf: "center",
+                    height: 120,
+                    width: 120,
+                    textAlign: "center",
                   }}
                 >
+                  <Image 
+                  source={require("../assets/images/CONTACT US.png")}
+                />
                   Contact Us
                 </Text>
               </View>
