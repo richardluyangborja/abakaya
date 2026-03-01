@@ -15,12 +15,12 @@ export default function HayopPagsusulit() {
     {
       label: "Alamat ng Aso",
       href: "/AlamatNgAsoPagsusulit",
-      image: require("../../../../assets/images/LUGAR.png"),
+      image: require("../../../../assets/images/ASO.png"),
     },
     {
       label: "Alamat ng Butiki",
       href: "/AlamatNgButikiPagsusulit",
-      image: require("../../../../assets/images/PRUTAS.png"),
+      image: require("../../../../assets/images/BUTIKI.png"),
     },
   ];
 
@@ -64,7 +64,7 @@ export default function HayopPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Hayop
+              Hayop Pagsusulit
             </Text>
           </View>
           {pages.map((p) => (

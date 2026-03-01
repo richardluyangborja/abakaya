@@ -36,7 +36,7 @@ export default function AlamatPagsusulit() {
     {
       label: "Halaman",
       href: "/HalamanPagsusulit",
-      image: require("../../../assets/images/BAGAY.png"),
+      image: require("../../../assets/images/HALAMAN.png"),
     },
   ];
 
@@ -80,7 +80,7 @@ export default function AlamatPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Alamat
+              Alamat Pagsuslit
             </Text>
           </View>
           {pages.map((p) => (

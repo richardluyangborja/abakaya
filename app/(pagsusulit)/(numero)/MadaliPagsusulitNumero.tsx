@@ -6,11 +6,13 @@ import {
   Image,
   Modal,
   StyleSheet,
-  ImageBackground,
+  Animated,
 } from "react-native";
 import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const prutas = [
   {
@@ -41,11 +43,31 @@ const prutas = [
 ];
 
 const feedbacks = [
-  { score: 1, label: "1 Star", image: null },
-  { score: 2, label: "2 Stars", image: null },
-  { score: 3, label: "3 Stars", image: null },
-  { score: 4, label: "4 Stars", image: null },
-  { score: 5, label: "5 Stars", image: null },
+  {
+    score: 1,
+    label: "1 Star",
+    image: require("../../../assets/images/one_star.png"), 
+  },
+  {
+    score: 2,
+    label: "2 Stars",
+    image: require("../../../assets/images/two_star.png"),
+  },
+  {
+    score: 3,
+    label: "3 Stars",
+    image: require("../../../assets/images/three_star.png"), 
+  },
+  {
+    score: 4,
+    label: "4 Stars",
+    image: require("../../../assets/images/four_star.png"), 
+  },
+  {
+    score: 5,
+    label: "5 Stars",
+    image: require("../../../assets/images/five_star.png"), 
+  },
 ];
 
 const maxTurns = 5;
@@ -74,6 +96,8 @@ export default function MadaliPagsusulitNumero() {
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(turnTime);
   const [gameOver, setGameOver] = useState(false);
+
+  const [progress, setProgress] = useState(new Animated.Value(1));
 
   const [fruit, setFruit] = useState(prutas[0]);
   const [correctAnswer, setCorrectAnswer] = useState(0);
@@ -105,6 +129,12 @@ export default function MadaliPagsusulitNumero() {
       setTimeLeft((prev) => prev - 1);
     }, 1000);
 
+    Animated.timing(progress, {
+          toValue: timeLeft / turnTime,
+          duration: 1000,
+          useNativeDriver: false, 
+        }).start();
+
     return () => clearTimeout(timer);
   }, [timeLeft, gameOver]);
 
@@ -134,7 +164,7 @@ export default function MadaliPagsusulitNumero() {
 
   const feedback = feedbacks.find((r) => r.score === score) ?? {
     label: "0 Star",
-    image: null,
+    image: require("../../../assets/images/timer.png"),
   };
 
   return (
@@ -188,17 +218,20 @@ export default function MadaliPagsusulitNumero() {
         style={styles.quiztree}
       />
 
-      <Text
-        style={{
-          fontSize: 16,
-          fontWeight: "semibold",
-          color: "#CC0001",
-          alignSelf: "center",
-          top: 80,
-        }}
-      >
-        Time Left: {timeLeft}s
-      </Text>
+              {/* BAR ITU STAYL */}
+              <View style={styles.progressBarContainer}>
+                <Animated.View
+                  style={[
+                    styles.progressBar,
+                    {
+                      width: progress.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: ["0%", "100%"],
+                      }),
+                    },
+                  ]}
+                />
+              </View>
 
       <Text
         style={{
@@ -206,7 +239,7 @@ export default function MadaliPagsusulitNumero() {
           fontWeight: "semibold",
           color: "#000",
           alignSelf: "center",
-          top: 150,
+          top: 70,
         }}
       >
         Bilangin at piliin ang tamang sagot.
@@ -221,7 +254,7 @@ export default function MadaliPagsusulitNumero() {
           gap: 8,
           marginVertical: 48,
           paddingHorizontal: 16,
-          top: 200,
+          top: 100,
         }}
       >
         {Array.from({ length: correctAnswer }).map((_, index) => (
@@ -256,21 +289,22 @@ export default function MadaliPagsusulitNumero() {
               backgroundColor: "#eee",
               padding: 16,
               borderRadius: 20,
-              top: 190,
+              top: 100,
             }}
             onPress={() => handleAnswer(choice)}
           >
-            <Text style={{ fontSize: 36, fontWeight: "bold" }}>{choice}</Text>
+            <Text style={{ fontSize: 36, fontWeight: "bold",}}>{choice}</Text>
           </Pressable>
         ))}
       </View>
 
       <Text
         style={{
+          position: "fixed",
           fontSize: 20,
           fontWeight: "semibold",
           marginLeft: 16,
-          top: 200,
+          top: 100,
         }}
       >
         Score: {score}
@@ -287,7 +321,7 @@ export default function MadaliPagsusulitNumero() {
           <View
             style={{
               width: "80%",
-              backgroundColor: "#fff",
+              backgroundColor: "#023D7A",
               borderRadius: 20,
               padding: 24,
               alignItems: "center",
@@ -297,7 +331,7 @@ export default function MadaliPagsusulitNumero() {
               {feedback.image ? (
                 <Image
                   source={feedback.image}
-                  style={{ width: 80, height: 80 }}
+                  style={{ width: 150, height: 150, }}
                 />
               ) : (
                 <Text
@@ -313,30 +347,26 @@ export default function MadaliPagsusulitNumero() {
             </View>
 
             <Pressable
-              style={{
-                backgroundColor: "#EEB311",
-                paddingVertical: 12,
-                paddingHorizontal: 24,
-                borderRadius: 16,
-                marginBottom: 12,
-              }}
-              onPress={handleRestart}
-            >
-              <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                Play Again
-              </Text>
-            </Pressable>
-
-            <Pressable onPress={() => router.back()}>
-              <Text
                 style={{
-                  fontSize: 16,
-                  color: "red",
+                  top: 180,
+                  position: "absolute",
+                  left: 110,
                 }}
+                onPress={() => handleRestart()}
               >
-                Exit
-              </Text>
-            </Pressable>
+                <MaterialIcons name="replay" size={24} color="white" />
+              </Pressable>
+
+              <Pressable 
+              style={{
+                  top: 180,
+                  position: "absolute",
+                  marginLeft: 30,
+                }}
+                onPress={() => router.back()}>
+                
+                <Entypo name="home" size={24} color="white" />
+              </Pressable>
           </View>
         </View>
       </Modal>
@@ -359,6 +389,20 @@ const styles = StyleSheet.create({
     height: 300,
     left: -18,
     top: 80,
+  },
+    progressBarContainer: {
+    height: 15,
+    width: "50%",
+    backgroundColor: "#FFE18B", 
+    borderRadius: 5,
+    marginTop: 80,
+    marginLeft: 15,
+    alignSelf: "center",
+  },
+  progressBar: {
+    height: "100%",
+    backgroundColor: "#CC0001",
+    borderRadius: 5,
   },
 });
 

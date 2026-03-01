@@ -21,12 +21,12 @@ export default function Pagsusulit() {
     {
       label: "Alamat",
       href: "/AlamatPagsusulit",
-      image: require("../../assets/images/NUMERO.png"),
+      image: require("../../assets/images/ALAMAT.png"),
     },
     {
       label: "Maikling Kwento",
       href: "/MaiklingKwentoPagsusulit",
-      image: require("../../assets/images/NUMERO.png"),
+      image: require("../../assets/images/MAIKLING KWENTO.png"),
     },
   ];
 
@@ -82,7 +82,9 @@ export default function Pagsusulit() {
               backgroundColor: "#EDB111",
               borderRadius: 20,
               width: "100%",
-              padding: 34,
+              padding: 50,
+              overflow: "hidden",
+              top: 30,
             }}
             onPress={() => router.navigate(p.href as RelativePathString)}
           >
@@ -99,7 +101,7 @@ export default function Pagsusulit() {
                 color: "#fff",
                 fontWeight: "bold",
                 fontSize: 24,
-                paddingLeft: 90,
+                paddingLeft: 60,
               }}
             >
               {p.label}

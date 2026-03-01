@@ -15,7 +15,7 @@ export default function PrutasPagsusulit() {
     {
       label: "Alamat ng Pinya",
       href: "/AlamatNgPinyaPagsusulit",
-      image: require("../../../../assets/images/LUGAR.png"),
+      image: require("../../../../assets/images/PINYA.png"),
     },
     // {
     //   label: "Alamat ng Mangga",
@@ -64,7 +64,7 @@ export default function PrutasPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Prutas
+              Prutas Pagsusulit
             </Text>
           </View>
           {pages.map((p) => (

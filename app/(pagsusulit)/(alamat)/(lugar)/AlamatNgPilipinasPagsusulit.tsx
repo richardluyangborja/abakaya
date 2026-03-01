@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Entypo from '@expo/vector-icons/Entypo';
 
 
 const TIME_PER_QUESTION = 20;
@@ -55,11 +57,31 @@ const QUESTIONS = [
 ];
 
 const feedbacks = [
-  { score: 1, label: "1 Star", image: null },
-  { score: 2, label: "2 Stars", image: null },
-  { score: 3, label: "3 Stars", image: null },
-  { score: 4, label: "4 Stars", image: null },
-  { score: 5, label: "5 Stars", image: null },
+  {
+    score: 1,
+    label: "1 Star",
+    image: require("../../../../assets/images/one_star.png"), 
+  },
+  {
+    score: 2,
+    label: "2 Stars",
+    image: require("../../../../assets/images/two_star.png"),
+  },
+  {
+    score: 3,
+    label: "3 Stars",
+    image: require("../../../../assets/images/three_star.png"), 
+  },
+  {
+    score: 4,
+    label: "4 Stars",
+    image: require("../../../../assets/images/four_star.png"), 
+  },
+  {
+    score: 5,
+    label: "5 Stars",
+    image: require("../../../../assets/images/five_star.png"), 
+  },
 ];
 
 export default function AlamatNgPilipinasPagsusulit() {
@@ -125,7 +147,7 @@ export default function AlamatNgPilipinasPagsusulit() {
 
   const feedback = feedbacks.find((f) => f.score === score) || {
     label: "Try Again!",
-    image: null,
+    image: require("../../../../assets/images/timer.png"),
   };
 
   return (
@@ -149,7 +171,7 @@ export default function AlamatNgPilipinasPagsusulit() {
             <View
               style={{
                 width: "80%",
-                backgroundColor: "#fff",
+                backgroundColor: "#023D7A",
                 borderRadius: 20,
                 padding: 24,
                 alignItems: "center",
@@ -159,7 +181,7 @@ export default function AlamatNgPilipinasPagsusulit() {
                 {feedback.image ? (
                   <Image
                     source={feedback.image}
-                    style={{ width: 80, height: 80 }}
+                    style={{ width: 150, height: 150, }}
                   />
                 ) : (
                   <Text
@@ -176,28 +198,24 @@ export default function AlamatNgPilipinasPagsusulit() {
 
               <Pressable
                 style={{
-                  backgroundColor: "#EEB311",
-                  paddingVertical: 12,
-                  paddingHorizontal: 24,
-                  borderRadius: 16,
-                  marginBottom: 12,
+                  top: 180,
+                  position: "absolute",
+                  left: 110,
                 }}
                 onPress={() => restartQuiz()}
               >
-                <Text style={{ fontSize: 18, fontWeight: "bold" }}>
-                  Play Again
-                </Text>
+                <MaterialIcons name="replay" size={24} color="white" />
               </Pressable>
 
-              <Pressable onPress={() => router.back()}>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: "red",
-                  }}
-                >
-                  Exit
-                </Text>
+              <Pressable 
+              style={{
+                  top: 180,
+                  position: "absolute",
+                  marginLeft: 30,
+                }}
+                onPress={() => router.back()}>
+                
+                <Entypo name="home" size={24} color="white" />
               </Pressable>
             </View>
           </View>

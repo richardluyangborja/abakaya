@@ -82,6 +82,7 @@ export default function Leksyon() {
         padding: 16,
         backgroundColor: "#CC0000",
         borderRadius: 20,
+        top: 10,
       }}
     >
       <Text
@@ -103,8 +104,9 @@ export default function Leksyon() {
           backgroundColor: "#EDB111",
           borderRadius: 20,
           width: "100%",
-          padding: 40,
+          padding: 50,
           overflow: "hidden",
+          top: 30,
         }}
         onPress={() => router.navigate(p.href as RelativePathString)}
       >
@@ -114,15 +116,16 @@ export default function Leksyon() {
             position: "absolute",
             width: 100,
             height: 100, 
+            top: 10,
           }}
           resizeMode="cover"
         />
-        <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24, paddingLeft: 90,}}>
+        <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 24, paddingLeft: 60,}}>
           {p.label}
         </Text>
       </Pressable>
     ))}
-  </View>
+    </View>
   </ScrollView>
 </ImageBackground>
   );

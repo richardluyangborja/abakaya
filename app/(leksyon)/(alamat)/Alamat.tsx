@@ -36,7 +36,7 @@ export default function Alamat() {
     {
       label: "Halaman",
       href: "/Halaman",
-      image: require("../../../assets/images/BAGAY.png"),
+      image: require("../../../assets/images/HALAMAN.png"),
     },
   ];
 

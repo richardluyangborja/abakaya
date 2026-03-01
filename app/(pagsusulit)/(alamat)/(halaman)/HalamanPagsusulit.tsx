@@ -15,12 +15,12 @@ export default function HalamanPagsusulit() {
     {
       label: "Alamat ng Makahiya",
       href: "/AlamatNgMakahiyaPagsusulit",
-      image: require("../../../../assets/images/LUGAR.png"),
+      image: require("../../../../assets/images/MAKAHIYA.png"),
     },
     {
       label: "Alamat ng Palay",
       href: "/AlamatNgPalayPagsusulit",
-      image: require("../../../../assets/images/PRUTAS.png"),
+      image: require("../../../../assets/images/PALAY.png"),
     },
   ];
 
@@ -64,7 +64,7 @@ export default function HalamanPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Halaman
+              Halaman Pagsusulit
             </Text>
           </View>
           {pages.map((p) => (

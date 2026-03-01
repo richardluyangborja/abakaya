@@ -15,12 +15,12 @@ export default function LugarrPagsusulit() {
     {
       label: "Alamat ng Bulkang Mayon",
       href: "/AlamatNgBulkangMayonPagsusulit",
-      image: require("../../../../assets/images/LUGAR.png"),
+      image: require("../../../../assets/images/MAYON.png"),
     },
     {
       label: "Alamat ng Pilipinas",
       href: "/AlamatNgPilipinasPagsusulit",
-      image: require("../../../../assets/images/PRUTAS.png"),
+      image: require("../../../../assets/images/PILIPINAS.png"),
     },
   ];
 
@@ -64,7 +64,7 @@ export default function LugarrPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Lugar
+              Lugar Pagsusulit
             </Text>
           </View>
           {pages.map((p) => (

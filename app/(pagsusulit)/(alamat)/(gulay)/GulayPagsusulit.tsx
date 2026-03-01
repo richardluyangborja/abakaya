@@ -15,12 +15,12 @@ export default function GulayPagsusulit() {
     {
       label: "Alamat ng Ampalaya",
       href: "/AlamatNgAmpalayaPagsusulit",
-      image: require("../../../../assets/images/LUGAR.png"),
+      image: require("../../../../assets/images/AMPALAYA.png"),
     },
     {
       label: "Alamat ng Kalabasa",
       href: "/AlamatNgKalabasaPagsusulit",
-      image: require("../../../../assets/images/PRUTAS.png"),
+      image: require("../../../../assets/images/KALABASA.png"),
     },
   ];
 
@@ -64,7 +64,7 @@ export default function GulayPagsusulit() {
                 fontSize: 20,
               }}
             >
-              Gulay
+              Gulay Pagsusulit
             </Text>
           </View>
           {pages.map((p) => (
