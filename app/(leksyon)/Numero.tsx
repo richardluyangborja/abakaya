@@ -1,7 +1,15 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, Image, ImageBackground, StyleSheet } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
-import AntDesign from '@expo/vector-icons/AntDesign';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  Image,
+  ImageBackground,
+  StyleSheet,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function Numero() {
   const router = useRouter();
@@ -70,18 +78,18 @@ export default function Numero() {
 
   return (
     <ImageBackground
-          source={require("../../assets/images/NUMERO BG.png")}
-          style={{
-            flex: 1,
-            backgroundColor: "#fff",
-          }}
-          >
+      source={require("../../assets/images/NUMERO BG.png")}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+      }}
+    >
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <ScrollView>
         <View
@@ -125,16 +133,27 @@ export default function Numero() {
                 borderColor: n.borderColor,
               }}
             >
-              <Text style={{ color: "#000", fontSize: 100, fontWeight: "bold" }}>
+              <Text
+                style={{ color: "#000", fontSize: 100, fontWeight: "bold" }}
+              >
                 {n.title}
               </Text>
-              <Text style={{ color: "#000", fontWeight: "bold", fontSize: 24, position: "absolute", left: 170, top: 10 }}>
+              <Text
+                style={{
+                  color: "#000",
+                  fontWeight: "bold",
+                  fontSize: 24,
+                  position: "absolute",
+                  left: 170,
+                  top: 10,
+                }}
+              >
                 {n.label}
               </Text>
               <Image
                 source={n.image}
                 style={{
-                  position: "absolute", 
+                  position: "absolute",
                   width: 150,
                   height: 150,
                   left: 120,
@@ -142,16 +161,26 @@ export default function Numero() {
                 }}
                 resizeMode="cover"
               />
-              <AntDesign style={{ color: "#000", position:"absolute", right: 0, bottom: 0,}} name="sound" size={24} color="black" />
+              <AntDesign
+                style={{
+                  color: "#000",
+                  position: "absolute",
+                  right: 0,
+                  bottom: 0,
+                }}
+                name="sound"
+                size={24}
+                color="black"
+              />
             </View>
           ))}
         </View>
       </ScrollView>
-      </ImageBackground>
+    </ImageBackground>
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -161,3 +190,4 @@ const styles = StyleSheet.create ({
     gap: 16,
   },
 });
+

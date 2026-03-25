@@ -1,6 +1,14 @@
 import { useRouter } from "expo-router";
-import { Pressable, Text, View, ImageBackground, StyleSheet, Image, ScrollView } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  Text,
+  View,
+  ImageBackground,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export default function Hugis() {
   const router = useRouter();
@@ -48,97 +56,99 @@ export default function Hugis() {
   ];
 
   return (
-    <ImageBackground 
-              source={require('../../assets/images/HUGIS BG.png')}
-               style={styles.background}
-            >
-              <View
-    style={{
-      ...StyleSheet.absoluteFillObject,
-      backgroundColor: "rgba(255,255,255,0.2)",
-    }}
-  />
-      <View style={styles.navbar}>
-      <Pressable onPress={() => router.navigate("/Leksyon")}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
-      <ScrollView>
+    <ImageBackground
+      source={require("../../assets/images/HUGIS BG.png")}
+      style={styles.background}
+    >
       <View
         style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "flex-start",
-          gap: 16,
-          paddingHorizontal: 16,
-          paddingVertical: 16,
+          ...StyleSheet.absoluteFillObject,
+          backgroundColor: "rgba(255,255,255,0.2)",
         }}
-      >
+      />
+      <View style={styles.navbar}>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
+      <ScrollView>
         <View
           style={{
-            padding: 16,
-            backgroundColor: "#CC0000",
-            borderRadius: 20,
-            marginBottom: 24,
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "flex-start",
+            gap: 16,
+            paddingHorizontal: 16,
+            paddingVertical: 16,
           }}
         >
-          <Text
+          <View
             style={{
-              color: "#fff",
-              fontWeight: "bold",
-              fontSize: 20,
+              padding: 16,
+              backgroundColor: "#CC0000",
+              borderRadius: 20,
+              marginBottom: 24,
             }}
           >
-            Hugis
-          </Text>
-        </View>
-        <View
-          style={{
-            paddingHorizontal: 12,
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            rowGap: 22,
-          }}
-        >
-          {hugis.map((p) => (
-            <View
-              key={p.title}
+            <Text
               style={{
-                width: "48%",
-                height: "auto",
-                backgroundColor: "#eee",
-                borderWidth: 6,
-                borderColor: p.borderColor,
-                alignItems: "center",
-                justifyContent: "center",
-                padding: 12,
-                borderRadius: 20,
+                color: "#fff",
+                fontWeight: "bold",
+                fontSize: 20,
               }}
             >
-              <Text style={{ fontSize: 24, color: "#000", marginTop: 130}}>{p.title}</Text>
-              <Image
-                                source={p.image}
-                                style={{
-                                  position: "absolute",
-                                  width: 100,
-                                  height: 100,
-                                }}
-                                resizeMode="cover"
-                              />
-            </View>
-          ))}
+              Hugis
+            </Text>
+          </View>
+          <View
+            style={{
+              paddingHorizontal: 12,
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              rowGap: 22,
+            }}
+          >
+            {hugis.map((p) => (
+              <View
+                key={p.title}
+                style={{
+                  width: "48%",
+                  height: "auto",
+                  backgroundColor: "#eee",
+                  borderWidth: 6,
+                  borderColor: p.borderColor,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: 12,
+                  borderRadius: 20,
+                }}
+              >
+                <Text style={{ fontSize: 24, color: "#000", marginTop: 130 }}>
+                  {p.title}
+                </Text>
+                <Image
+                  source={p.image}
+                  style={{
+                    position: "absolute",
+                    width: 100,
+                    height: 100,
+                  }}
+                  resizeMode="cover"
+                />
+              </View>
+            ))}
+          </View>
         </View>
-      </View>
       </ScrollView>
-   </ImageBackground>
+    </ImageBackground>
   );
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -153,3 +163,4 @@ const styles = StyleSheet.create ({
     opacity: 50,
   },
 });
+

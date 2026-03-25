@@ -49,7 +49,7 @@ export default function AlamatPagsusulit() {
       }}
     >
       <View style={styles.navbar}>
-        <Pressable onPress={() => router.navigate("/Leksyon")}>
+        <Pressable onPress={() => router.back()}>
           <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
         <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>

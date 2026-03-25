@@ -6,6 +6,7 @@ import {
   Text,
   View,
   StyleSheet,
+  ScrollView,
   ImageBackground,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -14,9 +15,9 @@ export default function Pagsusulit() {
   const router = useRouter();
   const pages = [
     {
-      label: "Numero",
-      href: "/PagsusulitNumeroLevel",
-      image: require("../../assets/images/NUMERO.png"),
+      label: "Abakada",
+      href: "/AbakadaPagsusulit",
+      image: require("../../assets/images/ABAKADA.png"),
     },
     {
       label: "Alamat",
@@ -24,9 +25,24 @@ export default function Pagsusulit() {
       image: require("../../assets/images/ALAMAT.png"),
     },
     {
+      label: "Hugis",
+      href: "/HugisPagsusulit",
+      image: require("../../assets/images/HUGIS.png"),
+    },
+    {
+      label: "Kulay",
+      href: "/KulayPagsusulit",
+      image: require("../../assets/images/KULAY.png"),
+    },
+    {
       label: "Maikling Kwento",
       href: "/MaiklingKwentoPagsusulit",
       image: require("../../assets/images/MAIKLING KWENTO.png"),
+    },
+    {
+      label: "Numero",
+      href: "/NumeroPagsusulit",
+      image: require("../../assets/images/NUMERO.png"),
     },
   ];
 
@@ -45,70 +61,72 @@ export default function Pagsusulit() {
         <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
 
-      <View
-        style={{
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 16,
-          paddingHorizontal: 16,
-        }}
-      >
+      <ScrollView>
         <View
           style={{
-            padding: 16,
-            backgroundColor: "#CC0000",
-            borderRadius: 20,
-            top: 40,
-            position: "absolute",
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 16,
+            paddingHorizontal: 16,
           }}
         >
-          <Text
+          <View
             style={{
-              color: "#fff",
-              fontWeight: "bold",
-              fontSize: 20,
-            }}
-          >
-            Pagsusulit
-          </Text>
-        </View>
-
-        {pages.map((p) => (
-          <Pressable
-            key={p.href}
-            style={{
-              position: "relative",
-              backgroundColor: "#EDB111",
+              padding: 16,
+              backgroundColor: "#CC0000",
               borderRadius: 20,
-              width: "100%",
-              padding: 50,
-              overflow: "hidden",
-              top: 30,
+              top: 40,
+              position: "absolute",
             }}
-            onPress={() => router.navigate(p.href as RelativePathString)}
           >
-            <Image
-              source={p.image as ImageSourcePropType}
-              style={{
-                position: "absolute",
-                width: 100,
-                height: 100,
-              }}
-            />
             <Text
               style={{
                 color: "#fff",
                 fontWeight: "bold",
-                fontSize: 24,
-                paddingLeft: 60,
+                fontSize: 20,
               }}
             >
-              {p.label}
+              Pagsusulit
             </Text>
-          </Pressable>
-        ))}
-      </View>
+          </View>
+
+          {pages.map((p) => (
+            <Pressable
+              key={p.href}
+              style={{
+                position: "relative",
+                backgroundColor: "#EDB111",
+                borderRadius: 20,
+                width: "100%",
+                padding: 50,
+                overflow: "hidden",
+                top: 30,
+              }}
+              onPress={() => router.navigate(p.href as RelativePathString)}
+            >
+              <Image
+                source={p.image as ImageSourcePropType}
+                style={{
+                  position: "absolute",
+                  width: 100,
+                  height: 100,
+                }}
+              />
+              <Text
+                style={{
+                  color: "#fff",
+                  fontWeight: "bold",
+                  fontSize: 24,
+                  paddingLeft: 60,
+                }}
+              >
+                {p.label}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </ScrollView>
     </ImageBackground>
   );
 }
