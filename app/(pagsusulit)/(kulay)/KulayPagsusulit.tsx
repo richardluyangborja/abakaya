@@ -25,11 +25,11 @@ const kulayList = [
 ];
 
 const prutas = [
-  { id: 1, name: "Mansanas", color: "red", image: null },
-  { id: 2, name: "Saging", color: "yellow", image: null },
-  { id: 3, name: "Ubas", color: "green", image: null }, // bat green ubas gago ahahah ano yan hilaw
-  { id: 4, name: "Blueberry", color: "blue", image: null },
-  { id: 5, name: "Orange", color: "orange", image: null },
+  { id: 1, name: "Mansanas", color: "red", image: require("../../../assets/images/1rd.png"),},
+  { id: 2, name: "Saging", color: "yellow", image: require("../../../assets/images/2ylw.png"), },
+  { id: 3, name: "Ubas", color: "green", image: require("../../../assets/images/5grn.png"), }, // bat green ubas gago ahahah ano yan hilaw
+  { id: 4, name: "Blueberry", color: "blue", image: require("../../../assets/images/4blu.png"), },
+  { id: 5, name: "Orange", color: "orange", image: require("../../../assets/images/2orng.png"),},
 ];
 
 const feedbacks = [
@@ -178,7 +178,21 @@ export default function MadaliPagsusulitKulay() {
           <Feather name="pause" size={24} color="#fff" />
         </Pressable>
       </View>
+      <Text style={styles.title}>Kulay</Text>
 
+      <Image
+      
+              source={require("../../../assets/images/bird.png")}
+              style={styles.bird}
+            />
+
+      <Image
+              source={require("../../../assets/images/rainbow.png")}
+              style={styles.rainbow_image}
+            />
+
+            
+      
       <Text style={styles.title}>Kulay</Text>
       <Text style={styles.turn}>
         Turn {turn} / {maxTurns}
@@ -200,8 +214,12 @@ export default function MadaliPagsusulitKulay() {
       </View>
 
       {/* QUESTION */}
+      <Text style={styles.question_bird}>
+        Piliin ang {"\n"}
+        prutas na kulay
+      </Text>
       <Text style={styles.question}>
-        Piliin ang prutas na kulay{" "}
+        {" "}
         <Text style={{ fontWeight: "bold" }}>{targetColor.name}</Text>
       </Text>
 
@@ -214,7 +232,7 @@ export default function MadaliPagsusulitKulay() {
             onPress={() => handleAnswer(item)}
           >
             {item.image ? (
-              <Image source={item.image} style={{ width: 80, height: 80 }} />
+              <Image source={item.image} style={{ width: 80, height: 80,}} />
             ) : (
               <Text style={{ fontSize: 18 }}>{item.name}</Text>
             )}
@@ -225,7 +243,8 @@ export default function MadaliPagsusulitKulay() {
       <Text style={styles.score}>Score: {score}</Text>
 
       {/* GAME OVER */}
-      <Modal visible={gameOver} transparent animationType="fade">
+      <Modal
+      visible={gameOver} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
             <Image
@@ -233,11 +252,23 @@ export default function MadaliPagsusulitKulay() {
               style={{ width: 150, height: 150 }}
             />
 
-            <Pressable onPress={handleRestart}>
+            <Pressable
+            style={{
+                  top: 180,
+                  position: "absolute",
+                  left: 110,
+            }}
+            onPress={handleRestart}>
               <MaterialIcons name="replay" size={28} color="#fff" />
             </Pressable>
 
-            <Pressable onPress={() => router.back()}>
+            <Pressable
+            style={{
+                  top: 180,
+                  position: "absolute",
+                  marginLeft: 30,
+                }}
+            onPress={() => router.back()}>
               <Entypo name="home" size={28} color="#fff" />
             </Pressable>
           </View>
@@ -279,17 +310,30 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#EEB311",
-    alignSelf: "center",
+    color: "#0000",
+    top: 110,
+    position: "absolute",
+    right: 30,
+
   },
   turn: {
-    textAlign: "center",
     color: "#023D7A",
+    top: 40,
+    left: 230,
+    fontWeight: "bold",
   },
   question: {
     marginTop: 40,
     textAlign: "center",
     fontSize: 18,
+  },
+  question_bird: {
+    top: 280,
+    left: 25,
+    fontSize: 18,
+    position: "absolute",
+    textAlign: "center",
+    fontWeight: "bold",
   },
   choicesContainer: {
     flexDirection: "row",
@@ -299,11 +343,11 @@ const styles = StyleSheet.create({
   },
   choice: {
     backgroundColor: "#eee",
-    padding: 20,
+    padding: 10,
     borderRadius: 20,
   },
   score: {
-    marginTop: 40,
+    marginTop: 60,
     marginLeft: 20,
     fontSize: 18,
   },
@@ -312,7 +356,7 @@ const styles = StyleSheet.create({
     width: "50%",
     backgroundColor: "#FFE18B",
     borderRadius: 5,
-    marginTop: 20,
+    marginTop: 90,
     alignSelf: "center",
   },
   progressBar: {
@@ -327,14 +371,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalBox: {
-    backgroundColor: "#023D7A",
-    padding: 24,
+    width: "80%",
     borderRadius: 20,
+    backgroundColor: "#023D7A",
     alignItems: "center",
-    gap: 20,
+    padding: 44,
   },
   pauseBtn: {
     color: "#fff",
     fontSize: 18,
   },
+  rainbow_image: {
+    width: "120%",
+    height: 300,
+    top: 52,
+    position: "absolute",
+    flex: 1,
+  },
+  bird: {
+    width: "45%",
+    height: 190,
+    top: 80,
+  }
 });

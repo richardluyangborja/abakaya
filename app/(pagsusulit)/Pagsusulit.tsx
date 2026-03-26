@@ -72,23 +72,19 @@ export default function Pagsusulit() {
           }}
         >
           <View
-            style={{
+          style={{
               padding: 16,
               backgroundColor: "#CC0000",
               borderRadius: 20,
-              top: 40,
-              position: "absolute",
+              top: 10,
             }}
-          >
-            <Text
-              style={{
+            >
+          <Text
+          style={{
                 color: "#fff",
                 fontWeight: "bold",
                 fontSize: 20,
-              }}
-            >
-              Pagsusulit
-            </Text>
+              }}>Pagsusulit</Text>
           </View>
 
           {pages.map((p) => (
