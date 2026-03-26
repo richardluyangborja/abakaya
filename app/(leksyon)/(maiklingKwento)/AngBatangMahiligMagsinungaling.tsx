@@ -1,5 +1,7 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Video } from "expo-av";
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function AngBatangMahiligMagsinungaling() {
   const router = useRouter();
@@ -11,27 +13,27 @@ export default function AngBatangMahiligMagsinungaling() {
         backgroundColor: "#fff",
       }}
     >
-      <View
-        style={{
-          marginTop: 24,
-          flexDirection: "row",
-          gap: 16,
-          padding: 16,
-        }}
-      >
+      <View style={styles.navbar}>
         <Pressable onPress={() => router.back()}>
-          <Text>Back</Text>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
         </Pressable>
-        <Text>ABAKAYA</Text>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
       </View>
       <ScrollView>
         <View
           style={{
             flex: 1,
             paddingHorizontal: 16,
-            gap: 20,
           }}
         >
+          <Video
+            source={require("../../../assets/videos/mahilig-magsinungaling.mp4")}
+            style={styles.video}
+            useNativeControls
+            resizeMode="cover"
+            shouldPlay
+            isLooping
+          />
           <Text
             style={{
               fontSize: 24,
@@ -40,35 +42,6 @@ export default function AngBatangMahiligMagsinungaling() {
           >
             Ang Batang Mahilig Magsinungaling
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              gap: 24,
-            }}
-          >
-            <Pressable
-              style={{
-                borderColor: "#333",
-                borderWidth: 1,
-                paddingVertical: 8,
-                paddingHorizontal: 16,
-                borderRadius: 20,
-              }}
-            >
-              <Text>Pakinggan</Text>
-            </Pressable>
-            <Pressable
-              style={{
-                borderColor: "#333",
-                borderWidth: 1,
-                paddingVertical: 8,
-                paddingHorizontal: 16,
-                borderRadius: 20,
-              }}
-            >
-              <Text>Panoorin</Text>
-            </Pressable>
-          </View>
           <View style={{ gap: 20 }}>
             <Text style={{ fontSize: 16, textAlign: "justify" }}>
               Si Elisa ay isang batang babae na naninirahan sa isang malayong
@@ -125,6 +98,9 @@ export default function AngBatangMahiligMagsinungaling() {
               marginBottom: 24,
               alignSelf: "center",
             }}
+            onPress={() =>
+              router.navigate("/AngBatangMahiligMagsinungalingPagsusulit")
+            }
           >
             <Text
               style={{
@@ -141,3 +117,27 @@ export default function AngBatangMahiligMagsinungaling() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    flexDirection: "row",
+    padding: 16,
+    paddingTop: 35,
+    marginTop: 0,
+    backgroundColor: "#01254C",
+    gap: 16,
+  },
+  image: {
+    position: "absolute",
+    width: 360,
+    height: 200,
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  video: {
+    width: 320,
+    height: 200,
+  },
+});

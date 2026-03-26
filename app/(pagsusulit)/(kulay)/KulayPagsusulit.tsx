@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+import { AvatarHeader } from "@/app/lib/avatar-header";
 
 /* BOY DAGDAGAN MO NALANG KULAY KUNG MERON SA ASSET */
 
@@ -174,9 +175,12 @@ export default function MadaliPagsusulitKulay() {
 
         <Text style={{ color: "#fff" }}>Madali Level</Text>
 
-        <Pressable onPress={() => setPaused(true)}>
-          <Feather name="pause" size={24} color="#fff" />
-        </Pressable>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
+          <Pressable onPress={() => setPaused(true)}>
+            <Feather name="pause" size={24} color="#fff" />
+          </Pressable>
+          <AvatarHeader />
+        </View>
       </View>
       <Text style={styles.title}>Kulay</Text>
 

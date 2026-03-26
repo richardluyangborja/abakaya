@@ -105,6 +105,7 @@ export default function AlamatPagsusulit() {
           ))}
         </View>
       </ScrollView>
+      <View style={{ height: 16 }} />
     </ImageBackground>
   );
 }

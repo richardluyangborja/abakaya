@@ -123,6 +123,7 @@ export default function Pagsusulit() {
           ))}
         </View>
       </ScrollView>
+      <View style={{ height: 16 }} />
     </ImageBackground>
   );
 }

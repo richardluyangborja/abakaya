@@ -7,14 +7,15 @@ import {
   Pressable,
   Modal,
   Image,
-  StyleSheet, 
+  StyleSheet,
   ImageBackground,
-  Animated
+  Animated,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Entypo from '@expo/vector-icons/Entypo';
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Entypo from "@expo/vector-icons/Entypo";
+import { AvatarHeader } from "@/app/lib/avatar-header";
 
 const TIME_PER_QUESTION = 20;
 
@@ -55,7 +56,7 @@ const feedbacks = [
   {
     score: 1,
     label: "1 Star",
-    image: require("../../../assets/images/one_star.png"), 
+    image: require("../../../assets/images/one_star.png"),
   },
   {
     score: 2,
@@ -65,17 +66,17 @@ const feedbacks = [
   {
     score: 3,
     label: "3 Stars",
-    image: require("../../../assets/images/three_star.png"), 
+    image: require("../../../assets/images/three_star.png"),
   },
   {
     score: 4,
     label: "4 Stars",
-    image: require("../../../assets/images/four_star.png"), 
+    image: require("../../../assets/images/four_star.png"),
   },
   {
     score: 5,
     label: "5 Stars",
-    image: require("../../../assets/images/five_star.png"), 
+    image: require("../../../assets/images/five_star.png"),
   },
 ];
 
@@ -86,13 +87,14 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
   const [selected, setSelected] = useState<number | null>(null);
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const [progress, setProgress] = useState(new Animated.Value(1));
 
   const currentQuestion = QUESTIONS[currentIndex];
 
   useEffect(() => {
-    if (finished) return;
+    if (finished || paused) return;
 
     if (timeLeft === 0) {
       handleNext();
@@ -102,10 +104,10 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
     const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
 
     Animated.timing(progress, {
-          toValue: timeLeft / TIME_PER_QUESTION,
-          duration: 1000,
-          useNativeDriver: false, 
-        }).start();
+      toValue: timeLeft / TIME_PER_QUESTION,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
 
     return () => clearTimeout(timer);
   }, [timeLeft, finished]);
@@ -136,6 +138,7 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
   const restartQuiz = () => {
     setCurrentIndex(0);
     setScore(0);
+    setPaused(false);
     setSelected(null);
     setTimeLeft(TIME_PER_QUESTION);
     setFinished(false);
@@ -148,13 +151,12 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
 
   return (
     <ImageBackground
-        source={require("../../../assets/images/quiz_bg.png")}
-        style={{
-          flex: 1,
-          backgroundColor: "#fff",
-        }}
+      source={require("../../../assets/images/quiz_bg.png")}
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+      }}
     >
-
       <View style={{ flex: 1 }}>
         <Modal visible={finished} transparent animationType="fade">
           <View
@@ -178,7 +180,7 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
                 {feedback.image ? (
                   <Image
                     source={feedback.image}
-                    style={{ width: 150, height: 150, }}
+                    style={{ width: 150, height: 150 }}
                   />
                 ) : (
                   <Text
@@ -204,95 +206,90 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
                 <MaterialIcons name="replay" size={24} color="white" />
               </Pressable>
 
-              <Pressable 
-              style={{
+              <Pressable
+                style={{
                   top: 180,
                   position: "absolute",
                   marginLeft: 30,
                 }}
-                onPress={() => router.back()}>
-                
+                onPress={() => router.back()}
+              >
                 <Entypo name="home" size={24} color="white" />
               </Pressable>
             </View>
           </View>
         </Modal>
 
-      {/* HEADER */}
-     <View style={styles.navbar}>
-        <Pressable onPress={() => router.back()}>
-          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-        </Pressable>
-        <Text style={{ color: "#fff", marginTop: 3 }}>Avatar</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 24,
-          }}
-        >
-          <Feather
-            style={{ color: "#ff0000", position: "absolute", marginLeft: 220 }}
-            name="settings"
-            size={24}
-          />
+        {/* HEADER */}
+        <View style={styles.navbar}>
+          <Pressable onPress={() => router.back()}>
+            <Ionicons name="chevron-back" size={24} color="#fff" />
+          </Pressable>
+
+          <Text style={{ color: "#fff" }}>Madali Level</Text>
+
+          <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
+            <Pressable onPress={() => setPaused(true)}>
+              <Feather name="pause" size={24} color="#fff" />
+            </Pressable>
+            <AvatarHeader />
+          </View>
         </View>
-      </View>
-      
-      <Image
-        source={require("../../../assets/images/ANG BATANG MABAIT AT MAGALANG.png")}
-        style={{
-          height: 160,
-          width: 280,
-          position: "absolute",
-          alignContent: "center",
-          alignItems: "center",
-          alignSelf: "center",
-          top: 250,
-          opacity: 0.8,
-        }}
-      />
-      
 
-      <Text
-        style={{
-          fontSize: 28,
-          fontWeight: "700",
-          color: "#EEB311",
-          alignSelf: "center",
-          marginVertical: 12,
-        }}
-      >
-        Maikling Kwento
-      </Text>
+        <Image
+          source={require("../../../assets/images/ANG BATANG MABAIT AT MAGALANG.png")}
+          style={{
+            height: 160,
+            width: 280,
+            position: "absolute",
+            alignContent: "center",
+            alignItems: "center",
+            alignSelf: "center",
+            top: 250,
+            opacity: 0.8,
+          }}
+        />
 
-      <Text
-        style={{
-          fontSize: 20,
-          alignSelf: "center",
-        }}
-      >
-        {currentIndex + 1}/{QUESTIONS.length}
-      </Text>
-
-      {/* BAR ITU STAYL */}
-              <View style={styles.progressBarContainer}>
-                <Animated.View
-                  style={[
-                    styles.progressBar,
-                    {
-                      width: progress.interpolate({
-                        inputRange: [0, 1],
-                        outputRange: ["0%", "100%"],
-                      }),
-                    },
-                  ]}
-                />
-              </View>
-
-      <View style={{ paddingHorizontal: 24, }}>
         <Text
           style={{
-            fontSize: 22,
+            fontSize: 28,
+            fontWeight: "700",
+            color: "#EEB311",
+            alignSelf: "center",
+            marginVertical: 12,
+          }}
+        >
+          Maikling Kwento
+        </Text>
+
+        <Text
+          style={{
+            fontSize: 20,
+            alignSelf: "center",
+          }}
+        >
+          {currentIndex + 1}/{QUESTIONS.length}
+        </Text>
+
+        {/* BAR ITU STAYL */}
+        <View style={styles.progressBarContainer}>
+          <Animated.View
+            style={[
+              styles.progressBar,
+              {
+                width: progress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: ["0%", "100%"],
+                }),
+              },
+            ]}
+          />
+        </View>
+
+        <View style={{ paddingHorizontal: 24 }}>
+          <Text
+            style={{
+              fontSize: 22,
               fontWeight: "bold",
               marginBottom: 20,
               top: 100,
@@ -300,58 +297,88 @@ export default function AngBatangMabaitAtMagalangPagsusulit() {
               textAlign: "center",
               left: 18,
               color: "#FFE18B",
+            }}
+          >
+            {currentQuestion.question}
+          </Text>
+
+          {currentQuestion.choices.map((choice, index) => {
+            const isSelected = selected === index;
+            const isCorrect = index === currentQuestion.answerIndex;
+
+            let bg = "#fff";
+
+            if (selected !== null) {
+              if (isCorrect) bg = "#4CAF50";
+              else if (isSelected) bg = "#F44336";
+            }
+
+            return (
+              <TouchableOpacity
+                key={index}
+                style={{
+                  padding: 16,
+                  borderRadius: 10,
+                  marginBottom: 12,
+                  backgroundColor: bg,
+                  top: 200,
+                }}
+                onPress={() => handleChoice(index)}
+              >
+                <Text style={{ fontSize: 18 }}>{choice}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
+      </View>
+      <Modal visible={paused} transparent animationType="fade">
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          {currentQuestion.question}
-        </Text>
+          <View
+            style={{
+              width: "80%",
+              backgroundColor: "#023D7A",
+              borderRadius: 20,
+              padding: 24,
+              alignItems: "center",
+            }}
+          >
+            <Pressable onPress={() => setPaused(false)}>
+              <Text style={styles.pauseBtn}>Ituloy</Text>
+            </Pressable>
 
-        {currentQuestion.choices.map((choice, index) => {
-          const isSelected = selected === index;
-          const isCorrect = index === currentQuestion.answerIndex;
+            <Pressable onPress={restartQuiz}>
+              <Text style={styles.pauseBtn}>Ulitin</Text>
+            </Pressable>
 
-          let bg = "#fff";
-
-          if (selected !== null) {
-            if (isCorrect) bg = "#4CAF50";
-            else if (isSelected) bg = "#F44336";
-          }
-
-          return (
-            <TouchableOpacity
-              key={index}
-              style={{
-                padding: 16,
-                borderRadius: 10,
-                marginBottom: 12,
-                backgroundColor: bg,
-                top: 200,
-              }}
-              onPress={() => handleChoice(index)}
-            >
-              <Text style={{ fontSize: 18 }}>{choice}</Text>
-            </TouchableOpacity>
-          );
-        })}
-      </View>
-    </View>
+            <Pressable onPress={() => router.back()}>
+              <Text style={styles.pauseBtn}>Itigil</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </ImageBackground>
   );
 }
 
-
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
+    justifyContent: "space-between",
     padding: 16,
-    paddingTop: 35,
-    marginTop: 0,
+    paddingTop: 40,
     backgroundColor: "#01254C",
-    gap: 16,
   },
   progressBarContainer: {
     height: 15,
     width: "80%",
-    backgroundColor: "#FFE18B", 
+    backgroundColor: "#FFE18B",
     borderRadius: 5,
     marginTop: 20,
     marginBottom: 20,
@@ -362,4 +389,10 @@ const styles = StyleSheet.create ({
     backgroundColor: "#CC0001",
     borderRadius: 5,
   },
+  pauseBtn: {
+    color: "#fff",
+    fontSize: 18,
+    marginVertical: 10,
+  },
 });
+

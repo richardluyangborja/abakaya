@@ -111,6 +111,7 @@ export default function AlamatNgPinya() {
               marginBottom: 24,
               alignSelf: "center",
             }}
+            onPress={() => router.navigate("/AlamatNgPinyaPagsusulit")}
           >
             <Text
               style={{

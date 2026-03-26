@@ -77,6 +77,7 @@ export default function MaiklingKwentoPagsusulit() {
                 borderRadius: 20,
                 width: "100%",
                 padding: 24,
+                marginBottom: 16,
               }}
               onPress={() => router.navigate(p.href as RelativePathString)}
             >

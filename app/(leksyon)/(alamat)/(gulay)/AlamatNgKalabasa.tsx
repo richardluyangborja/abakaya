@@ -1,6 +1,14 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, StyleSheet, Image } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Video } from "expo-av";
 
 export default function AlamatNgKalabasa() {
   const router = useRouter();
@@ -13,30 +21,32 @@ export default function AlamatNgKalabasa() {
       }}
     >
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.back()}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <ScrollView>
         <View
           style={{
             flex: 1,
             paddingHorizontal: 16,
-            gap: 20,
           }}
         >
-          <Image
-            source={require("../../../../assets/images/KALABASA.png")}
-            style={styles.image}
+          <Video
+            source={require("../../../../assets/videos/kalabasa.mp4")}
+            style={styles.video}
+            useNativeControls
+            resizeMode="cover"
+            shouldPlay
+            isLooping
           />
 
           <Text
             style={{
               fontSize: 24,
               fontWeight: "bold",
-              marginTop: 200,
             }}
           >
             Alamat ng Kalabasa
@@ -100,6 +110,7 @@ export default function AlamatNgKalabasa() {
               marginBottom: 24,
               alignSelf: "center",
             }}
+            onPress={() => router.navigate("/AlamatNgKalabasaPagsusulit")}
           >
             <Text
               style={{
@@ -117,8 +128,7 @@ export default function AlamatNgKalabasa() {
   );
 }
 
-
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -130,6 +140,14 @@ const styles = StyleSheet.create ({
   image: {
     position: "absolute",
     width: 360,
+    height: 200,
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  video: {
+    width: 320,
     height: 200,
   },
 });

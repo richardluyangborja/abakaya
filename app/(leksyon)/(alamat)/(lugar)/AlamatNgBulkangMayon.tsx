@@ -107,6 +107,7 @@ export default function AlamatNgBulkangMayon() {
               marginBottom: 24,
               alignSelf: "center",
             }}
+            onPress={() => router.navigate("/AlamatNgBulkangMayonPagsusulit")}
           >
             <Text
               style={{
@@ -147,4 +148,3 @@ const styles = StyleSheet.create({
     height: 200,
   },
 });
-

@@ -132,6 +132,7 @@ export default function Leksyon() {
           ))}
         </View>
       </ScrollView>
+      <View style={{ height: 16 }} />
     </ImageBackground>
   );
 }
@@ -146,4 +147,3 @@ const styles = StyleSheet.create({
     gap: 16,
   },
 });
-

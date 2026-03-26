@@ -1,6 +1,14 @@
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, Text, View, StyleSheet, Image } from "react-native";
-import Ionicons from '@expo/vector-icons/Ionicons';
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+} from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Video } from "expo-av";
 
 export default function AlamatNgPilipinas() {
   const router = useRouter();
@@ -13,29 +21,31 @@ export default function AlamatNgPilipinas() {
       }}
     >
       <View style={styles.navbar}>
-      <Pressable onPress={() => router.back()}>
-        <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
-      </Pressable>
-      <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
-    </View>
+        <Pressable onPress={() => router.back()}>
+          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+        </Pressable>
+        <Text style={{ color: "#fff", marginTop: 3 }}>ABAKAYA</Text>
+      </View>
 
       <ScrollView>
         <View
           style={{
             flex: 1,
             paddingHorizontal: 16,
-            gap: 20,
           }}
         >
-          <Image
-            source={require("../../../../assets/images/PILIPINAS.png")}
-            style={styles.image}
+          <Video
+            source={require("../../../../assets/videos/pilipinas.mp4")}
+            style={styles.video}
+            useNativeControls
+            resizeMode="cover"
+            shouldPlay
+            isLooping
           />
           <Text
             style={{
               fontSize: 24,
               fontWeight: "bold",
-              marginTop: 200,
             }}
           >
             Alamat ng Pilipinas
@@ -99,6 +109,7 @@ export default function AlamatNgPilipinas() {
               marginBottom: 24,
               alignSelf: "center",
             }}
+            onPress={() => router.navigate("/AlamatNgPilipinasPagsusulit")}
           >
             <Text
               style={{
@@ -116,8 +127,7 @@ export default function AlamatNgPilipinas() {
   );
 }
 
-
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
     padding: 16,
@@ -129,6 +139,14 @@ const styles = StyleSheet.create ({
   image: {
     position: "absolute",
     width: 360,
+    height: 200,
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  video: {
+    width: 320,
     height: 200,
   },
 });

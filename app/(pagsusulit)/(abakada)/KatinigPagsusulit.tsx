@@ -12,6 +12,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+import { AvatarHeader } from "@/app/lib/avatar-header";
 
 const words = [
   "bahay",
@@ -161,7 +162,7 @@ export default function KatinigQuiz() {
         <Text style={{ color: "#fff" }}>Madali Level</Text>
 
         <View style={{ flexDirection: "row", gap: 16 }}>
-          <Text style={{ color: "#fff" }}>Avatar</Text>
+          <AvatarHeader />
 
           <Pressable onPress={() => setPaused(true)}>
             <Feather name="pause" size={22} color="#fff" />

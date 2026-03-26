@@ -10,6 +10,7 @@ import {
   Pressable,
   Modal,
 } from "react-native";
+import { AvatarHeader } from "./lib/avatar-header";
 
 export default function App() {
   const router = useRouter();
@@ -33,10 +34,7 @@ export default function App() {
           height: 60,
         }}
       >
-        <Image
-          source={require("../assets/images/AGILA.png")}
-          style={styles.profile}
-        />
+        <AvatarHeader style={styles.profile} />
       </Pressable>
 
       <Pressable
@@ -95,7 +93,9 @@ export default function App() {
             >
               <Feather name="x-circle" size={24} color="red" />
             </Pressable>
-            <View style={{ padding: 20, flexDirection: "row", gap: 24, top: 30, }}>
+            <View
+              style={{ padding: 20, flexDirection: "row", gap: 24, top: 30 }}
+            >
               <View
                 style={{
                   position: "relative",
@@ -114,13 +114,13 @@ export default function App() {
                     alignSelf: "center",
                     height: 120,
                     width: 120,
-                    textAlign: "center"
-                  }}  
+                    textAlign: "center",
+                  }}
                 >
                   <Image
-                  source={require("../assets/images/MUSIC.png")}
-                  style={{top: 0, left: 0, }}
-                />
+                    source={require("../assets/images/MUSIC.png")}
+                    style={{ top: 0, left: 0 }}
+                  />
                   On
                 </Text>
               </View>
@@ -143,13 +143,13 @@ export default function App() {
                     alignSelf: "center",
                     height: 120,
                     width: 120,
-                    textAlign: "center"
+                    textAlign: "center",
                   }}
                 >
                   <Image
-                  source={require("../assets/images/CREDITS.png")}
-                  style={{top: 0, left: 0, }}
-                />
+                    source={require("../assets/images/CREDITS.png")}
+                    style={{ top: 0, left: 0 }}
+                  />
                   Credits
                 </Text>
               </View>
@@ -175,13 +175,13 @@ export default function App() {
                     alignSelf: "center",
                     height: 120,
                     width: 120,
-                    textAlign: "center"
+                    textAlign: "center",
                   }}
                 >
                   <Image
-                  source={require("../assets/images/PRIVACY POLICY.png")}
-                  style={{top: 0, left: 0, }}
-                />
+                    source={require("../assets/images/PRIVACY POLICY.png")}
+                    style={{ top: 0, left: 0 }}
+                  />
                   Privacy Policy
                 </Text>
               </View>
@@ -196,7 +196,6 @@ export default function App() {
                 }}
               >
                 <Text
-                
                   style={{
                     position: "absolute",
                     color: "#fff",
@@ -209,9 +208,7 @@ export default function App() {
                     textAlign: "center",
                   }}
                 >
-                  <Image 
-                  source={require("../assets/images/CONTACT US.png")}
-                />
+                  <Image source={require("../assets/images/CONTACT US.png")} />
                   Contact Us
                 </Text>
               </View>

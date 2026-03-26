@@ -7,15 +7,15 @@ import {
   Pressable,
   Modal,
   Image,
-  StyleSheet, 
+  StyleSheet,
   ImageBackground,
-  Animated
+  Animated,
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Entypo from '@expo/vector-icons/Entypo';
-
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import Entypo from "@expo/vector-icons/Entypo";
+import { AvatarHeader } from "@/app/lib/avatar-header";
 
 const TIME_PER_QUESTION = 20;
 
@@ -49,7 +49,11 @@ const QUESTIONS = [
   {
     id: 4,
     question: "Ano ang natuklasan ni Aling Rosa sa bakuran?",
-    choices: ["A. Isang hayop", "B. Isang kahon ng ginto", "C. Isang kakaibang halaman"],
+    choices: [
+      "A. Isang hayop",
+      "B. Isang kahon ng ginto",
+      "C. Isang kakaibang halaman",
+    ],
     answerIndex: 2,
   },
   {
@@ -64,7 +68,7 @@ const feedbacks = [
   {
     score: 1,
     label: "1 Star",
-    image: require("../../../../assets/images/one_star.png"), 
+    image: require("../../../../assets/images/one_star.png"),
   },
   {
     score: 2,
@@ -74,20 +78,19 @@ const feedbacks = [
   {
     score: 3,
     label: "3 Stars",
-    image: require("../../../../assets/images/three_star.png"), 
+    image: require("../../../../assets/images/three_star.png"),
   },
   {
     score: 4,
     label: "4 Stars",
-    image: require("../../../../assets/images/four_star.png"), 
+    image: require("../../../../assets/images/four_star.png"),
   },
   {
     score: 5,
     label: "5 Stars",
-    image: require("../../../../assets/images/five_star.png"), 
+    image: require("../../../../assets/images/five_star.png"),
   },
 ];
-
 
 export default function AlamatNgPinyaPagsusulit() {
   const router = useRouter();
@@ -112,10 +115,10 @@ export default function AlamatNgPinyaPagsusulit() {
     const timer = setTimeout(() => setTimeLeft((t) => t - 1), 1000);
 
     Animated.timing(progress, {
-          toValue: timeLeft / TIME_PER_QUESTION,
-          duration: 1000,
-          useNativeDriver: false, 
-        }).start();
+      toValue: timeLeft / TIME_PER_QUESTION,
+      duration: 1000,
+      useNativeDriver: false,
+    }).start();
 
     return () => clearTimeout(timer);
   }, [timeLeft, finished]);
@@ -187,7 +190,7 @@ export default function AlamatNgPinyaPagsusulit() {
                 {feedback.image ? (
                   <Image
                     source={feedback.image}
-                    style={{ width: 150, height: 150, }}
+                    style={{ width: 150, height: 150 }}
                   />
                 ) : (
                   <Text
@@ -213,14 +216,14 @@ export default function AlamatNgPinyaPagsusulit() {
                 <MaterialIcons name="replay" size={24} color="white" />
               </Pressable>
 
-              <Pressable 
-              style={{
+              <Pressable
+                style={{
                   top: 180,
                   position: "absolute",
                   marginLeft: 30,
                 }}
-                onPress={() => router.back()}>
-                
+                onPress={() => router.back()}
+              >
                 <Entypo name="home" size={24} color="white" />
               </Pressable>
             </View>
@@ -232,16 +235,22 @@ export default function AlamatNgPinyaPagsusulit() {
           <Pressable onPress={() => router.back()}>
             <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
           </Pressable>
-          <Text style={{ color: "#fff", marginTop: 3 }}>Avatar</Text>
+          <AvatarHeader />
           <View
             style={{
               flexDirection: "row",
               gap: 24,
             }}
           >
-            <Text style={{ color: "#fff", top: 3, marginLeft: 170 }}>Madali</Text>
+            <Text style={{ color: "#fff", top: 3, marginLeft: 170 }}>
+              Madali
+            </Text>
             <Feather
-              style={{ color: "#ff0000", position: "absolute", marginLeft: 220 }}
+              style={{
+                color: "#ff0000",
+                position: "absolute",
+                marginLeft: 220,
+              }}
               name="settings"
               size={24}
             />
@@ -282,7 +291,6 @@ export default function AlamatNgPinyaPagsusulit() {
         >
           {currentIndex + 1}/{QUESTIONS.length}
         </Text>
-
 
         {/* BAR ITU STAYL */}
         <View style={styles.progressBarContainer}>
@@ -338,7 +346,9 @@ export default function AlamatNgPinyaPagsusulit() {
                 }}
                 onPress={() => handleChoice(index)}
               >
-                <Text style={{ fontSize: 18, textAlign: "center" }}>{choice}</Text>
+                <Text style={{ fontSize: 18, textAlign: "center" }}>
+                  {choice}
+                </Text>
               </TouchableOpacity>
             );
           })}
@@ -360,7 +370,7 @@ const styles = StyleSheet.create({
   progressBarContainer: {
     height: 15,
     width: "80%",
-    backgroundColor: "#FFE18B", 
+    backgroundColor: "#FFE18B",
     borderRadius: 5,
     marginTop: 20,
     marginBottom: 20,
@@ -372,3 +382,4 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 });
+

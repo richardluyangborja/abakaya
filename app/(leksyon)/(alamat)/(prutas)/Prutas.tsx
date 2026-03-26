@@ -17,11 +17,11 @@ export default function Prutas() {
       href: "/AlamatNgPinya",
       image: require("../../../../assets/images/LUGAR.png"),
     },
-    {
-      label: "Alamat ng Mangga",
-      href: "/AlamatNgMangga",
-      image: require("../../../../assets/images/LUGAR.png"),
-    },
+    // {
+    //   label: "Alamat ng Mangga",
+    //   href: "/AlamatNgMangga",
+    //   image: require("../../../../assets/images/LUGAR.png"),
+    // },
   ];
 
   return (

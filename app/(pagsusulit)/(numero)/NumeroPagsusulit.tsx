@@ -13,6 +13,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+import { AvatarHeader } from "@/app/lib/avatar-header";
 
 const prutas = [
   {
@@ -178,22 +179,16 @@ export default function MadaliPagsusulitNumero() {
     >
       <View style={styles.navbar}>
         <Pressable onPress={() => router.back()}>
-          <Ionicons style={{ color: "#fff" }} name="chevron-back" size={24} />
+          <Ionicons name="chevron-back" size={24} color="#fff" />
         </Pressable>
-        <Text style={{ color: "#fff", marginTop: 3 }}>Madali Level</Text>
-        <View
-          style={{
-            flexDirection: "row",
-            gap: 24,
-          }}
-        >
-          <Text style={{ color: "#fff", top: 3, marginLeft: 110 }}>Avatar</Text>
-          <Pressable
-            onPress={() => setPaused(true)}
-            style={{ position: "absolute", marginLeft: 180 }}
-          >
+
+        <Text style={{ color: "#fff" }}>Madali Level</Text>
+
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
+          <Pressable onPress={() => setPaused(true)}>
             <Feather name="pause" size={24} color="#fff" />
           </Pressable>
+          <AvatarHeader />
         </View>
       </View>
       <Text
@@ -413,11 +408,10 @@ export default function MadaliPagsusulitNumero() {
 const styles = StyleSheet.create({
   navbar: {
     flexDirection: "row",
+    justifyContent: "space-between",
     padding: 16,
-    paddingTop: 35,
-    marginTop: 0,
+    paddingTop: 40,
     backgroundColor: "#01254C",
-    gap: 16,
   },
   quiztree: {
     position: "absolute",
