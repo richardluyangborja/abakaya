@@ -15,6 +15,21 @@ export default function Pagsusulit() {
   const router = useRouter();
   const pages = [
     {
+      label: "Numero",
+      href: "/NumeroPagsusulit",
+      image: require("../../assets/images/NUMERO.png"),
+    },
+    {
+      label: "Kulay",
+      href: "/KulayPagsusulit",
+      image: require("../../assets/images/KULAY.png"),
+    },
+    {
+      label: "Maikling Kwento",
+      href: "/MaiklingKwentoPagsusulit",
+      image: require("../../assets/images/MAIKLING KWENTO.png"),
+    },
+    {
       label: "Abakada",
       href: "/AbakadaPagsusulit",
       image: require("../../assets/images/ABAKADA.png"),
@@ -28,21 +43,6 @@ export default function Pagsusulit() {
       label: "Hugis",
       href: "/HugisPagsusulit",
       image: require("../../assets/images/HUGIS.png"),
-    },
-    {
-      label: "Kulay",
-      href: "/KulayPagsusulit",
-      image: require("../../assets/images/KULAY.png"),
-    },
-    {
-      label: "Maikling Kwento",
-      href: "/MaiklingKwentoPagsusulit",
-      image: require("../../assets/images/MAIKLING KWENTO.png"),
-    },
-    {
-      label: "Numero",
-      href: "/NumeroPagsusulit",
-      image: require("../../assets/images/NUMERO.png"),
     },
   ];
 
@@ -72,19 +72,22 @@ export default function Pagsusulit() {
           }}
         >
           <View
-          style={{
+            style={{
               padding: 16,
               backgroundColor: "#CC0000",
               borderRadius: 20,
               top: 10,
             }}
-            >
-          <Text
-          style={{
+          >
+            <Text
+              style={{
                 color: "#fff",
                 fontWeight: "bold",
                 fontSize: 20,
-              }}>Pagsusulit</Text>
+              }}
+            >
+              Pagsusulit
+            </Text>
           </View>
 
           {pages.map((p) => (

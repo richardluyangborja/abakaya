@@ -1,10 +1,17 @@
+import { useMusic } from "@/app/lib/music-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Video } from "expo-av";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function AngBatangMabaitAtMagalang() {
   const router = useRouter();
+  const { stopMusic } = useMusic();
+
+  useEffect(() => {
+    stopMusic();
+  }, []);
 
   return (
     <View

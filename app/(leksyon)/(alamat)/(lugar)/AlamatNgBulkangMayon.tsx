@@ -2,9 +2,16 @@ import { useRouter } from "expo-router";
 import { Pressable, ScrollView, Text, View, StyleSheet } from "react-native";
 import { Video } from "expo-av";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useMusic } from "@/app/lib/music-context";
+import { useEffect } from "react";
 
 export default function AlamatNgBulkangMayon() {
   const router = useRouter();
+  const { stopMusic } = useMusic();
+
+  useEffect(() => {
+    stopMusic();
+  }, []);
 
   return (
     <View

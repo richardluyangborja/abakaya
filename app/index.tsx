@@ -1,6 +1,6 @@
 import Feather from "@expo/vector-icons/Feather";
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,10 +11,21 @@ import {
   Modal,
 } from "react-native";
 import { AvatarHeader } from "./lib/avatar-header";
+import { useMusic } from "./lib/music-context";
 
 export default function App() {
   const router = useRouter();
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { playMusic, stopMusic } = useMusic();
+
+  useEffect(() => {
+    playMusic(require("../assets/bgm.mp3"));
+
+    return () => {
+      // optional: stop music when leaving, if you don't want it looping
+      // stopMusic();
+    };
+  }, [playMusic]);
 
   return (
     <ImageBackground

@@ -9,9 +9,16 @@ import {
 } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { Video } from "expo-av";
+import { useMusic } from "@/app/lib/music-context";
+import { useEffect } from "react";
 
 export default function AlamatNgKalabasa() {
   const router = useRouter();
+  const { stopMusic } = useMusic();
+
+  useEffect(() => {
+    stopMusic();
+  }, []);
 
   return (
     <View

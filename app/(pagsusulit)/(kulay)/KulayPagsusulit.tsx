@@ -14,6 +14,7 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { AvatarHeader } from "@/app/lib/avatar-header";
+import { useMusic } from "@/app/lib/music-context";
 
 /* BOY DAGDAGAN MO NALANG KULAY KUNG MERON SA ASSET */
 
@@ -26,11 +27,36 @@ const kulayList = [
 ];
 
 const prutas = [
-  { id: 1, name: "Mansanas", color: "red", image: require("../../../assets/images/1rd.png"),},
-  { id: 2, name: "Saging", color: "yellow", image: require("../../../assets/images/2ylw.png"), },
-  { id: 3, name: "Ubas", color: "green", image: require("../../../assets/images/5grn.png"), }, // bat green ubas gago ahahah ano yan hilaw
-  { id: 4, name: "Blueberry", color: "blue", image: require("../../../assets/images/4blu.png"), },
-  { id: 5, name: "Orange", color: "orange", image: require("../../../assets/images/2orng.png"),},
+  {
+    id: 1,
+    name: "Mansanas",
+    color: "red",
+    image: require("../../../assets/images/1rd.png"),
+  },
+  {
+    id: 2,
+    name: "Saging",
+    color: "yellow",
+    image: require("../../../assets/images/2ylw.png"),
+  },
+  {
+    id: 3,
+    name: "Ubas",
+    color: "green",
+    image: require("../../../assets/images/5grn.png"),
+  }, // bat green ubas gago ahahah ano yan hilaw
+  {
+    id: 4,
+    name: "Blueberry",
+    color: "blue",
+    image: require("../../../assets/images/4blu.png"),
+  },
+  {
+    id: 5,
+    name: "Orange",
+    color: "orange",
+    image: require("../../../assets/images/2orng.png"),
+  },
 ];
 
 const feedbacks = [
@@ -86,6 +112,15 @@ function generateChoices(correctFruit: any) {
 
 export default function MadaliPagsusulitKulay() {
   const router = useRouter();
+  const { playMusic, stopMusic } = useMusic();
+
+  useEffect(() => {
+    playMusic(require("../../../assets/bgm2.mp3"));
+
+    return () => {
+      stopMusic();
+    };
+  }, []);
 
   const [turn, setTurn] = useState(1);
   const [score, setScore] = useState(0);
@@ -177,7 +212,12 @@ export default function MadaliPagsusulitKulay() {
 
         <View style={{ flexDirection: "row", alignItems: "center", gap: 16 }}>
           <Pressable onPress={() => setPaused(true)}>
-            <Feather name="pause" size={24} color="#fff" />
+            <Feather
+              name="pause"
+              size={24}
+              color="#fff"
+              style={{ zIndex: 1000 }}
+            />
           </Pressable>
           <AvatarHeader />
         </View>
@@ -185,18 +225,15 @@ export default function MadaliPagsusulitKulay() {
       <Text style={styles.title}>Kulay</Text>
 
       <Image
-      
-              source={require("../../../assets/images/bird.png")}
-              style={styles.bird}
-            />
+        source={require("../../../assets/images/bird.png")}
+        style={styles.bird}
+      />
 
       <Image
-              source={require("../../../assets/images/rainbow.png")}
-              style={styles.rainbow_image}
-            />
+        source={require("../../../assets/images/rainbow.png")}
+        style={styles.rainbow_image}
+      />
 
-            
-      
       <Text style={styles.title}>Kulay</Text>
       <Text style={styles.turn}>
         Turn {turn} / {maxTurns}
@@ -236,7 +273,7 @@ export default function MadaliPagsusulitKulay() {
             onPress={() => handleAnswer(item)}
           >
             {item.image ? (
-              <Image source={item.image} style={{ width: 80, height: 80,}} />
+              <Image source={item.image} style={{ width: 80, height: 80 }} />
             ) : (
               <Text style={{ fontSize: 18 }}>{item.name}</Text>
             )}
@@ -247,8 +284,7 @@ export default function MadaliPagsusulitKulay() {
       <Text style={styles.score}>Score: {score}</Text>
 
       {/* GAME OVER */}
-      <Modal
-      visible={gameOver} transparent animationType="fade">
+      <Modal visible={gameOver} transparent animationType="fade">
         <View style={styles.modalOverlay}>
           <View style={styles.modalBox}>
             <Image
@@ -257,22 +293,24 @@ export default function MadaliPagsusulitKulay() {
             />
 
             <Pressable
-            style={{
-                  top: 180,
-                  position: "absolute",
-                  left: 110,
-            }}
-            onPress={handleRestart}>
+              style={{
+                top: 180,
+                position: "absolute",
+                left: 110,
+              }}
+              onPress={handleRestart}
+            >
               <MaterialIcons name="replay" size={28} color="#fff" />
             </Pressable>
 
             <Pressable
-            style={{
-                  top: 180,
-                  position: "absolute",
-                  marginLeft: 30,
-                }}
-            onPress={() => router.back()}>
+              style={{
+                top: 180,
+                position: "absolute",
+                marginLeft: 30,
+              }}
+              onPress={() => router.back()}
+            >
               <Entypo name="home" size={28} color="#fff" />
             </Pressable>
           </View>
@@ -318,7 +356,6 @@ const styles = StyleSheet.create({
     top: 110,
     position: "absolute",
     right: 30,
-
   },
   turn: {
     color: "#023D7A",
@@ -403,5 +440,5 @@ const styles = StyleSheet.create({
     width: "45%",
     height: 190,
     top: 80,
-  }
+  },
 });

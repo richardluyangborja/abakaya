@@ -14,6 +14,7 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { AvatarHeader } from "@/app/lib/avatar-header";
+import { useMusic } from "@/app/lib/music-context";
 
 const prutas = [
   {
@@ -98,6 +99,15 @@ export default function MadaliPagsusulitNumero() {
   const [timeLeft, setTimeLeft] = useState(turnTime);
   const [gameOver, setGameOver] = useState(false);
   const [paused, setPaused] = useState(false);
+  const { playMusic, stopMusic } = useMusic();
+
+  useEffect(() => {
+    playMusic(require("../../../assets/bgm2.mp3"));
+
+    return () => {
+      stopMusic();
+    };
+  }, []);
 
   const [progress, setProgress] = useState(new Animated.Value(1));
 
