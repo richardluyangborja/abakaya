@@ -104,6 +104,7 @@ export default function AlamatNgAmpalayaPagsusulit() {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
 
+
   const [progress, setProgress] = useState(new Animated.Value(1));
 
   const currentQuestion = QUESTIONS[currentIndex];
@@ -254,10 +255,10 @@ export default function AlamatNgAmpalayaPagsusulit() {
                 color: "#ff0000",
                 position: "absolute",
                 marginLeft: 220,
-              }}
-              name="settings"
-              size={24}
-            />
+                }}
+                name="settings"
+                size={24}
+              />
           </View>
         </View>
 
@@ -384,5 +385,29 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: "#CC0001",
     borderRadius: 5,
+  },
+  modal: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalBox: {
+    width: "80%",
+    borderRadius: 20,
+    backgroundColor: "#023D7A",
+    alignItems: "center",
+    padding: 24,
+  },
+  pauseBtn: {
+    fontSize: 20,
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    borderRadius: 5,
+    backgroundColor: "#15E80E",
+    width: 180,
+    padding: 10,
+    textAlign: "center",
+    marginBottom: 10,
   },
 });

@@ -389,10 +389,23 @@ const styles = StyleSheet.create({
     backgroundColor: "#CC0001",
     borderRadius: 5,
   },
+  modalBox: {
+    width: "80%",
+    borderRadius: 20,
+    backgroundColor: "#023D7A",
+    alignItems: "center",
+    padding: 24,
+  },
   pauseBtn: {
-    color: "#fff",
-    fontSize: 18,
-    marginVertical: 10,
+    fontSize: 20,
+    color: "#FFFFFF",
+    fontWeight: "bold",
+    borderRadius: 5,
+    backgroundColor: "#15E80E",
+    width: 180,
+    padding: 10,
+    textAlign: "center",
+    marginBottom: 10,
   },
 });
 
